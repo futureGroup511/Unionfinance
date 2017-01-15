@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.future.dao.ExpenditureRecordDao">
+	<resultMap id="BaseResultMap" type="com.future.domain.ExpenditureRecord">
+		<id column="er_id" property="ir_id" jdbcType="INTEGER" />
+		<result column="er_date" property="ir_date" jdbcType="DATE" />
+		<result column="er_money" property="ir_money" jdbcType="DOUBLE" />
+		<result column="er_accour_repour" property="er_accour_repour" jdbcType="VARCHAR" />
+	</resultMap>
+	
+</mapper>

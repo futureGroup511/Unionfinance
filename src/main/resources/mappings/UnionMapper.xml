@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.future.dao.UnionDao">
+	<resultMap id="BaseResultMap" type="com.future.domain.Union">
+		<id column="un_id" property="un_id" jdbcType="INTEGER" />
+		<result column="un_name" property="un_name" jdbcType="VARCHAR" />
+		<result column="un_redundancy" property="un_redundancy" jdbcType="VARCHAR" />
+	</resultMap>
+	
+</mapper>
