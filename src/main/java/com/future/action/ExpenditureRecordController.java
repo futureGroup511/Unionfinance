@@ -10,6 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 @Scope("prototype")
-@RequestMapping("/expenditurerecord")
+@RequestMapping("expenditurerecord")
 public class ExpenditureRecordController extends BaseController {
 }

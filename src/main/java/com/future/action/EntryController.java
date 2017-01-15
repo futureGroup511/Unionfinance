@@ -10,6 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 @Scope("prototype")
-@RequestMapping("/entry")
+@RequestMapping("entry")
 public class EntryController extends BaseController{
 }

@@ -10,6 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 @Scope("prototype")
-@RequestMapping("/user")
+@RequestMapping("user")
 public class UserController extends BaseController{
 }
