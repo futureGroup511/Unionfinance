@@ -6,5 +6,28 @@
 		<result column="un_name" property="un_name" jdbcType="VARCHAR" />
 		<result column="un_redundancy" property="un_redundancy" jdbcType="VARCHAR" />
 	</resultMap>
-	
+
+	<insert id="add" parameterType="Union">
+		INSERT INTO uf_union(un_name) VALUES (#{un_name})
+	</insert>
+
+	<delete id="deleteById" parameterType="int">
+		DELETE FROM uf_union WHERE un_id = #{id}
+	</delete>
+
+	<update id="update" parameterType="Union">
+		UPDATE uf_union SET un_name = #{un_name} WHERE un_id = #{un_id}
+	</update>
+
+	<select id="findAllOrByid" parameterType="int">
+		<if test="id != null">
+			SELECT * FROM uf_union WHERE un_id = #{id}
+		</if>
+
+		<if test="id == null">
+			SELECT * FROM uf_union WHERE
+		</if>
+	</select>
+
+
 </mapper>

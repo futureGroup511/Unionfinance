@@ -1,13 +1,12 @@
 package com.future.domain;
+
 /**
- * 工会实体
- * @author 牛洧鹏
- *
+ * 宸ヤ細
  */
 public class Union {
-	private Integer un_id;
-	private String un_name; //工会名称
-	private String un_redundancy;// 冗余字段
+	private Integer un_id; //id
+	private String un_name; //宸ヤ細鍚嶅瓧
+	private String un_redundancy; //鍐椾綑瀛楁
 	public Integer getUn_id() {
 		return un_id;
 	}

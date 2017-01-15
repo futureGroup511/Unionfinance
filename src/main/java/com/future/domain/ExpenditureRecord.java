@@ -3,17 +3,15 @@ package com.future.domain;
 import java.util.Date;
 
 /**
- * Ö§³ö¼ÇÂ¼
- * @author Å£ä¢Åô
- *
- */
+	æ”¯å‡ºè®°å½•
+**/
 public class ExpenditureRecord {
-	private Integer er_id;//¼ÇÂ¼id
-	private Date er_date;//Ê±¼ä
-	private Entry er_entry; //ÌõÄ¿
-	private Integer er_money; //½ğÇ®
-	private String er_accour_repour;//±¨ÕËÈË
-	private User er_user;
+	private Integer er_id; //id
+	private Date er_date; //æ—¶é—´
+	private Entry er_entry; //æ¡ç›®
+	private Integer er_money; //é‡‘é¢
+	private String er_accour_repour; //æŠ¥è´¦äºº
+	private User er_user; //æ”¯å‡ºäºº
 	public Integer getEr_id() {
 		return er_id;
 	}

@@ -1,18 +1,17 @@
 package com.future.domain;
+
 /**
- * ÓÃ»§ÊµÌå
- * @author Å£ä¢Åô
- *
+ * ç”¨æˆ·
  */
 public class User {
 	private Integer user_id;
-	private String user_num; //ÕËºÅ
-	private String user_password;//ÃÜÂë
-	private String user_phonenumber; //µç»°ºÅÂë
+	private String user_num; //è´¦å·
+	private String user_password;//å¯†ç 
+	private String user_phonenumber; //ç”µè¯
 	private String user_name;
-	private String user_redundancy; //ÈßÓà×Ö¶Î
-	private Union user_union;  //¹¤»á
-	private Integer user_type;//ÓÃ»§ÀàĞÍ 1¡¢ÊÕÈë¹ÜÀíÔ± 2¡¢Ö§³ö¹ÜÀíÔ± 3¡¢ÆÕÍ¨ÓÃ»§
+	private String user_redundancy; //å†—ä½™
+	private Union user_union;  //å·¥ä¼š
+	private Integer user_type;//ç”¨æˆ·ç±»å‹ 1ã€æ‹¨æ¬¾ç®¡ç†å‘˜ 2ã€æ”¯å‡ºç®¡ç†å‘˜ 3ã€æ™®é€šç”¨æˆ·
 	
 	
 	public Integer getUser_type() {
