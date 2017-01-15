@@ -12,4 +12,5 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Scope("prototype")
 @RequestMapping("user")
 public class UserController extends BaseController{
+
 }

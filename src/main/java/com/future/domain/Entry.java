@@ -7,6 +7,7 @@ package com.future.domain;
 public class Entry {
 	private Integer en_id; //id
 	private Integer en_type; //条目的类型，0是收入，1是支出
+	private String en_name; //名称
 	private String en_redundancy;
 	public Integer getEn_id() {
 		return en_id;
@@ -26,6 +27,12 @@ public class Entry {
 	public void setEn_redundancy(String en_redundancy) {
 		this.en_redundancy = en_redundancy;
 	}
-	
-	
+
+	public String getEn_name() {
+		return en_name;
+	}
+
+	public void setEn_name(String en_name) {
+		this.en_name = en_name;
+	}
 }

@@ -1,6 +1,6 @@
 package com.future.service;
 
-import org.springframework.stereotype.Service;
+import com.future.domain.IncomeRecord;
 
 /**
  *  ’»Îº«¬º
@@ -9,4 +9,5 @@ import org.springframework.stereotype.Service;
  */
 public interface IncomeRecordService {
 
+    void add(IncomeRecord incomeRecord);
 }

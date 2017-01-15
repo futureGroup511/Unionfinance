@@ -3,16 +3,14 @@ package com.future.domain;
 import java.util.Date;
 
 /**
- * ÊÕÈë¼ÇÂ¼
- * @author Å£ä¢Åô
- *
+ * @author ç‰›æ´§é¹
  */
 public class IncomeRecord {
-	private Integer ir_id; //¼ÇÂ¼id
-	private Date ir_date;  //Ê±¼ä
-	private Entry ir_entry; //ÌõÄ¿ÀàĞÍ
-	private Double ir_money;//½ğ¶î
-	private User ir_user; //¹ÜÀíÔ±£¨Ö§³ö£©
+	private Integer ir_id; //id
+	private Date ir_date;  //æ—¶é—´
+	private Entry ir_entry; //æ¡ç›®
+	private Double ir_money;//é‡‘é¢
+	private User ir_user; //æ‹¨æ¬¾äºº
 	public Integer getIr_id() {
 		return ir_id;
 	}
@@ -44,5 +42,6 @@ public class IncomeRecord {
 	public void setIr_user(User ir_user) {
 		this.ir_user = ir_user;
 	}
-	
+
+	public static IncomeRecord newInstance(){return new IncomeRecord();}
 }

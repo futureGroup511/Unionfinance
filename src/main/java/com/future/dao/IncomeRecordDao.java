@@ -1,5 +1,6 @@
 package com.future.dao;
 
+import com.future.domain.IncomeRecord;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -10,4 +11,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface IncomeRecordDao {
 
+    void add(IncomeRecord incomeRecord);
 }

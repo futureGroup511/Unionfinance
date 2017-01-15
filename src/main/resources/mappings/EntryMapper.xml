@@ -4,7 +4,9 @@
 	<resultMap id="BaseResultMap" type="com.future.domain.Entry">
 		<id column="en_id" property="en_id" jdbcType="INTEGER" />
 		<result column="en_type" property="en_type" jdbcType="INTEGER" />
+		<result column="en_name" property="en_name" jdbcType="VARCHAR" />
 		<result column="en_redundancy" property="en_redundancy" jdbcType="VARCHAR" />
+
 	</resultMap>
 	
 </mapper>

@@ -7,5 +7,8 @@
 		<result column="ir_money" property="ir_money" jdbcType="DOUBLE" />
 		
 	</resultMap>
-	
+
+	<insert id="add" parameterType="IncomeRecord">
+		  INSERT  INTO uf_incomerecord(ir_date,ir_entry_id,ir_money,ir_user_id) VALUES (#{ir_date},#{ir_entry.en_id},#{ir_money},#{ir_user.user_id})
+	</insert>
 </mapper>
