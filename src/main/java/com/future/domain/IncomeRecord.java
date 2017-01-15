@@ -11,6 +11,7 @@ public class IncomeRecord {
 	private Entry ir_entry; //条目
 	private Double ir_money;//金额
 	private User ir_user; //拨款人
+	private Union ir_union; //公会
 	public Integer getIr_id() {
 		return ir_id;
 	}
@@ -44,4 +45,12 @@ public class IncomeRecord {
 	}
 
 	public static IncomeRecord newInstance(){return new IncomeRecord();}
+
+	public Union getIr_union() {
+		return ir_union;
+	}
+
+	public void setIr_union(Union ir_union) {
+		this.ir_union = ir_union;
+	}
 }

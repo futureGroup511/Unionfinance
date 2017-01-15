@@ -2,7 +2,6 @@ package com.future.dao.test;
 
 import com.future.domain.Entry;
 import com.future.domain.IncomeRecord;
-import com.future.domain.Union;
 import com.future.domain.User;
 import com.future.service.IncomeRecordService;
 import com.future.service.UnionService;
@@ -48,13 +47,24 @@ public class DaoTest {
 		incomeRecordService.add(incomeRecord);
 	}
 
-	/**
-	 * ���Թ������ɾ�Ĳ�
-	 */
 	@Test
 	public void testUnion(){
-		Union union = new Union();
+		/*Union union = new Union();
 		union.setUn_name("这是一个工会");
-		unionService.add(union);
+		unionService.add(union);*/
+		unionService.deleteById(1);
+		/*
+		unionService.deleteById(4);*/
+
+		/*Union union = new Union();
+		union.setUn_name("这是一个工会2");
+		union.setUn_id(1);
+		unionService.update(union);*/
+
+		/*Union unions = unionService.findById(1);
+		List<Union> unions2 = unionService.findAll();
+
+		System.out.println(unions);
+		for (Union union:unions2) System.out.println(union+"2");*/
 	}
 }

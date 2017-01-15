@@ -11,8 +11,8 @@ import com.future.service.UnionService;
 import java.util.List;
 
 /**
- * ¹¤»á
- * @author Å£ä¢Åô
+ * ï¿½ï¿½ï¿½ï¿½
+ * @author Å£ï¿½ï¿½ï¿½
  *
  */
 @Service
@@ -34,7 +34,11 @@ public class UnionServiceImpl implements UnionService{
 		unionDao.update(union);
 	}
 
-	public List<Union> findAllOrByid(Integer id) {
-		return unionDao.findAllOrByid(id);
+	public List<Union> findAll() {
+		return unionDao.findAll();
+	}
+
+	public Union findById(Integer id) {
+		return unionDao.findById(id);
 	}
 }

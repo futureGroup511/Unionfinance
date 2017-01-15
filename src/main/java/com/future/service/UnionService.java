@@ -5,8 +5,8 @@ import com.future.domain.Union;
 import java.util.List;
 
 /**
- * ¹¤»á
- * @author Å£ä¢Åô
+ * ï¿½ï¿½ï¿½ï¿½
+ * @author Å£ï¿½ï¿½ï¿½
  *
  */
 public interface UnionService {
@@ -18,5 +18,7 @@ public interface UnionService {
 
     void update(Union union);
 
-    List<Union> findAllOrByid(Integer id);
+    List<Union> findAll();
+
+    Union findById(Integer id);
 }

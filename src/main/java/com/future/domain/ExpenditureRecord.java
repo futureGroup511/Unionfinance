@@ -12,6 +12,7 @@ public class ExpenditureRecord {
 	private Integer er_money; //金额
 	private String er_accour_repour; //报账人
 	private User er_user; //支出人
+	private Union er_union; //工会
 	public Integer getEr_id() {
 		return er_id;
 	}
@@ -48,7 +49,12 @@ public class ExpenditureRecord {
 	public void setEr_user(User er_user) {
 		this.er_user = er_user;
 	}
-	
-	
-	
+
+	public Union getEr_union() {
+		return er_union;
+	}
+
+	public void setEr_union(Union er_union) {
+		this.er_union = er_union;
+	}
 }

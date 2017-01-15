@@ -25,7 +25,14 @@ public class Union {
 	public void setUn_redundancy(String un_redundancy) {
 		this.un_redundancy = un_redundancy;
 	}
-	
-	
-	
+
+
+	@Override
+	public String toString() {
+		return "Union{" +
+				"un_id=" + un_id +
+				", un_name='" + un_name + '\'' +
+				", un_redundancy='" + un_redundancy + '\'' +
+				'}';
+	}
 }

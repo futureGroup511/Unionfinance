@@ -19,15 +19,12 @@
 		UPDATE uf_union SET un_name = #{un_name} WHERE un_id = #{un_id}
 	</update>
 
-	<select id="findAllOrByid" parameterType="int">
-		<if test="id != null">
-			SELECT * FROM uf_union WHERE un_id = #{id}
-		</if>
-
-		<if test="id == null">
-			SELECT * FROM uf_union WHERE
-		</if>
+	<select id="findAll" resultType="Union">
+			SELECT * FROM uf_union
 	</select>
 
+	<select id="findById"  parameterType="int" resultType="Union">
+					SELECT * FROM uf_union WHERE un_id = #{id}
+	</select>
 
 </mapper>

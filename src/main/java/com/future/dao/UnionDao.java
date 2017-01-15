@@ -5,11 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-/**
- * π§ª·
- * @author ≈£‰¢≈Ù
- *
- */
+
 @Repository
 public interface UnionDao {
 
@@ -19,5 +15,7 @@ public interface UnionDao {
 
     void update(Union union);
 
-    List<Union> findAllOrByid(Integer id);
+    List<Union> findAll();
+
+    Union findById(Integer id);
 }
