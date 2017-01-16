@@ -15,7 +15,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.Date;
-import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:applicationContext.xml"})
@@ -77,6 +76,11 @@ public class DaoTest {
 
 	@Test
 	public void testEntry(){
+		Entry entry = new Entry();
+		entry.setEn_name("这是一个条目5");
+		entry.setEn_type(0);
+		entryService.add(entry);
+		System.out.println(entry);
 		/*Entry entry = new Entry();
 		entry.setEn_name("这是一个条目1");
 		entry.setEn_type(0);
@@ -97,11 +101,11 @@ public class DaoTest {
 		entryService.update(entry2);
 		*/
 
-		Entry entry = entryService.findById(5);
+		/*Entry entry = entryService.findById(5);
 		System.out.println(entry);
 
 		List<Entry> entries = entryService.findAll();
-		for(Entry entry3: entries) System.out.println(entry3);
+		for(Entry entry3: entries) System.out.println(entry3);*/
 	}
 
 	@Test

@@ -8,9 +8,12 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html>
 <head>
     <title>拨款页面</title>
+    <script src="${pageContext.request.contextPath}/js/jquery-2.1.4.js"></script>
+    <script src="${pageContext.request.contextPath}/js/addentry.js"></script>
 </head>
 <body>
     <form action="/Unionfinance/incomerecord/add" method="post">
@@ -21,18 +24,18 @@
                 </c:forEach>
             </select>
             条目:
-            <select name="ir_entry.en_id" >
+            <select name="ir_entry.en_id" id="entry">
                 <c:forEach items = "${entries}" var="entry">
                     <option value="${entry.en_id}">${entry.en_name}</option>
                 </c:forEach>
             </select>
-            <a href="#">添加条目</a>
+            <a href="#" onclick="addEntry(0)">添加条目</a>
             金额:
             <input type="text" name="ir_money" >
             备注:
             <input type="text" name="ir_redundancy" >
              <input type="submit" value="确定">
     </form>
-<p>${message}</p>
+<p id="message">${message}</p>
 </body>
 </html>

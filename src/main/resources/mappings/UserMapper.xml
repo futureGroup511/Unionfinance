@@ -10,18 +10,24 @@
 		<result column="user_redundancy" property="user_redundancy" jdbcType="VARCHAR" />
 		<result column="user_type" property="user_type" jdbcType="INTEGER" />
 	</resultMap>
-	
+
+	<resultMap id="findAllAndUnion" extends="BaseResultMap" type="com.future.domain.User">
+		<association property="user_union" javaType="Union">
+				<id column="un_id" property="un_id"></id>
+				<result column="un_name" property="un_name"></result>
+		</association>
+	</resultMap>
 	<sql id="Base_Column_List">
 	    user_id,user_name,user_num,user_password,user_phonenumber,user_redundancy,user_type
 	</sql>
 	
-	<select id="findUserById" parameterType="int" resultType="User">
-	    select <include refid="Base_Column_List"></include>
-	    from uf_user where user_id = #{id}
+	<select id="findUserById" parameterType="int" resultMap="findAllAndUnion">
+	    SELECT * FROM uf_user us  left join uf_union un on us.user_union_id = un.un_id
+	    WHERE us.user_id = #{id}
 	</select>
 
-	<select id="findAll" resultType="User">
-		SELECT * FROM uf_user
+	<select id="findAll" resultMap="findAllAndUnion">
+		SELECT * FROM uf_user us  left join uf_union un on us.user_union_id = un.un_id
 	</select>
 
 	<insert id="add" parameterType="User">

@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -62,4 +63,30 @@ public class EntryController extends BaseController{
         modelAndView.setViewName("/EntryViews/findAll");
         return  modelAndView;
     }
+
+    @ResponseBody
+    @RequestMapping("repeat")
+    public String repeat(Entry entry){
+        String result = "no";
+        List<Entry> entries = entryService.findAll();
+        for(Entry en:entries)
+            if (en.getEn_name().equals(entry.getEn_name()) && en.getEn_type().equals(entry.getEn_type())) result = "yes";
+        return  result;
+
+    }
+
+    @ResponseBody
+    @RequestMapping("/add")
+    public String add(Entry entry){
+        System.out.println(entry);
+        String result="";
+        try {
+            entryService.add(entry);
+            result = entry.getEn_id()+"";
+        }catch (Exception e) {
+            result = "添加失败";
+        }
+        return result;
+    }
+
 }
