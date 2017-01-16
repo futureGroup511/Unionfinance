@@ -8,9 +8,12 @@ import org.springframework.transaction.annotation.Transactional;
 import com.future.dao.IncomeRecordDao;
 import com.future.service.IncomeRecordService;
 
+import java.util.List;
+import java.util.Map;
+
 /**
- * ÊÕÈë¼ÇÂ¼
- * @author Å£ä¢Åô
+ * ï¿½ï¿½ï¿½ï¿½ï¿½Â¼
+ * @author Å£ï¿½ï¿½ï¿½
  *
  */
 @Service
@@ -22,5 +25,13 @@ public class IncomeRecordServiceImp implements IncomeRecordService {
 
 	public void add(IncomeRecord incomeRecord) {
 		incomeRecordDao.add(incomeRecord);
+	}
+
+    public int queryIncomeRecordsCount(Map<String, Object> paramMap) {
+        return incomeRecordDao.queryIncomeRecordsCount(paramMap);
+    }
+
+    public List<IncomeRecord> queryIncomeRecords(Map<String, Object> paramMap) {
+		return incomeRecordDao.queryIncomeRecords(paramMap);
 	}
 }
