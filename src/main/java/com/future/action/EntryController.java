@@ -1,9 +1,14 @@
 package com.future.action;
 
 import com.future.base.BaseController;
+import com.future.domain.Entry;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 /**
  * Created by 牛洧鹏 on 2017/1/15.
@@ -13,4 +18,48 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("entry")
 public class EntryController extends BaseController{
 
+    @RequestMapping("/findall")
+    public ModelAndView findAll(){
+        ModelAndView modelAndView = new ModelAndView();
+        List<Entry> entries = entryService.findAll();
+        modelAndView.addObject("entries",entries);
+        modelAndView.setViewName("/EntryViews/findAll");
+        return modelAndView;
+    }
+
+    @RequestMapping("/delete")
+    public ModelAndView delete(@RequestParam("id")Integer id){
+        ModelAndView modelAndView = new ModelAndView();
+        entryService.deleteById(id);
+        List<Entry> entries = entryService.findAll();
+        modelAndView.addObject("entries",entries);
+        modelAndView.addObject("message","删除成功");
+        modelAndView.setViewName("/EntryViews/findAll");
+        return  modelAndView;
+    }
+
+    @RequestMapping("/update")
+    public ModelAndView update(@RequestParam(value="id",required = false)Integer id,Entry entry){
+        ModelAndView modelAndView = new ModelAndView();
+        if(entry.getEn_id() == null){ //进入更新页面
+            Entry en = entryService.findById(id);
+            modelAndView.addObject("entry",en);
+        }else{
+            entryService.update(entry);
+            modelAndView.addObject("message","修改成功");
+            modelAndView.addObject("entry",entry);
+        }
+        modelAndView.setViewName("/EntryViews/update");
+        return modelAndView;
+    }
+
+    @RequestMapping("/findByType")
+    public ModelAndView findByType(@RequestParam("type")Integer type){
+        ModelAndView modelAndView = new ModelAndView();
+        List<Entry> entries = entryService.findByTyep(type);
+        modelAndView.addObject("entries",entries);
+        modelAndView.addObject("type",type);
+        modelAndView.setViewName("/EntryViews/findAll");
+        return  modelAndView;
+    }
 }

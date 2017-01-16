@@ -1,13 +1,25 @@
 package com.future.service;
 
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+import com.future.domain.Entry;
+
+import java.util.List;
 
 /**
- * ÌõÄ¿
- * @author Å£ä¢Åô
+ * æ¡ç›®
+ * @author ç‰›æ´§é¹
  *
  */
 public interface EntryService {
 
+    void add(Entry entry);
+
+    void  deleteById(Integer id);
+
+    void update(Entry entry);
+
+    List<Entry> findAll();
+
+    Entry findById(Integer id);
+
+    List<Entry> findByTyep(Integer type);
 }

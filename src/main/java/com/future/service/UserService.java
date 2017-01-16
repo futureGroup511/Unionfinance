@@ -1,15 +1,14 @@
 package com.future.service;
 
-import org.springframework.stereotype.Service;
-
 import com.future.domain.User;
 
-/**
- * ”√ªß
- * @author ≈£‰¢≈Ù
- *
- */
+import java.util.List;
+
 
 public interface UserService {
 	User findUserById(Integer id);
+	List<User> findAll();
+	void add(User user);
+	void update(User user);
+	void deleteById(Integer id);
 }

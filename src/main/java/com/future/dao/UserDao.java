@@ -1,18 +1,17 @@
 package com.future.dao;
 
-import java.util.List;
-
+import com.future.domain.User;
 import org.springframework.stereotype.Repository;
 
-import com.future.domain.User;
+import java.util.List;
 
-/**
- * ”√ªß
- * @author ≈£‰¢≈Ù
- *
- */
+
 @Repository
 public interface UserDao {
 
 	User findUserById(Integer id);
+	List<User> findAll();
+	void add(User user);
+	void update(User user);
+	void deleteById(Integer id);
 }
