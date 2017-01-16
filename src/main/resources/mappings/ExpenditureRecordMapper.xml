@@ -7,5 +7,11 @@
 		<result column="er_money" property="ir_money" jdbcType="DOUBLE" />
 		<result column="er_accour_repour" property="er_accour_repour" jdbcType="VARCHAR" />
 	</resultMap>
+
+	<insert id="insert" parameterType="com.future.domain.ExpenditureRecord">
+		INSERT INTO uf_expenditurerecord VALUES (null,#{er_date},#{er_entry.en_id},#{er_money},#{er_user.user_id},#{er_accour_repour},#{er_redundancy},#{er_union.un_id})
+	</insert>
+
+
 	
 </mapper>

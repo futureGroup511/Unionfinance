@@ -1,10 +1,19 @@
 package com.future.action;
 
 import com.future.base.BaseController;
+import com.future.domain.Entry;
+import com.future.domain.ExpenditureRecord;
+import com.future.domain.Union;
+import com.future.domain.User;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpSession;
+import java.util.Date;
+import java.util.List;
 
 /**
  * Created by 牛洧鹏 on 2017/1/15.
@@ -14,8 +23,38 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("expenditurerecord")
 public class ExpenditureRecordController extends BaseController {
 
+    /**
+     *  请求支出页面。
+     */
     @RequestMapping(value="addExpendUI",method = RequestMethod.GET)
-    public void addExpendUI(){
-        System.out.println("我到了");
+    public ModelAndView addExpendUI(){
+        String viewname = "ExpenditureRecordViews/addExpendUI";
+        ModelAndView modelAndView = new ModelAndView(viewname);
+        //准备数据，工会和条目
+        List<Entry> entryList = entryService.getAllExpenEntry();
+        List<Union> unionList = unionService.findAll();
+        modelAndView.addObject("entryList",entryList);
+        modelAndView.addObject("unionList",unionList);
+        modelAndView.addObject("expendRecord",new ExpenditureRecord());
+        return modelAndView;
     }
+
+    /**
+     *  处理支出请求。
+     */
+    @RequestMapping(value="addExpend",method = RequestMethod.POST)
+    public void addExpend(ExpenditureRecord expendRecord, HttpSession httpSession){
+        //单位，条目，金额，保障人、备注  新增时间和支出人
+        expendRecord.setEr_date(new Date());
+        User user = new User();
+        //======将来要删除
+        user.setUser_id(1);
+        httpSession.setAttribute("user",user);
+        //======
+        expendRecord.setEr_user((User)httpSession.getAttribute("user"));
+        System.out.println(expendRecord);
+        eRecordService.insert(expendRecord);
+
+    }
+
 }

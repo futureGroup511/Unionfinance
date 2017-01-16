@@ -45,4 +45,13 @@ public class EntryServiceImp implements EntryService {
 	public List<Entry> findByTyep(Integer type) {
 		return entryDao.findByTyep(type);
 	}
+
+
+	/**
+	 * 查询所有支出条目，类型为1
+	 * @return
+	 */
+	public List<Entry> getAllExpenEntry() {
+		return entryDao.getAllExpenEntry();
+	}
 }

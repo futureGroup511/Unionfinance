@@ -1,6 +1,6 @@
 package com.future.service;
 
-import org.springframework.stereotype.Service;
+import com.future.domain.ExpenditureRecord;
 
 /**
  * 支出记录
@@ -9,4 +9,10 @@ import org.springframework.stereotype.Service;
  */
 public interface ExpenditureRecordService {
 
+
+    /**
+     * 添加支出记录
+     * @param expendRecord
+     */
+    void insert(ExpenditureRecord expendRecord);
 }

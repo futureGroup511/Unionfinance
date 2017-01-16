@@ -31,4 +31,10 @@
 	<select id="findByTyep" parameterType="int" resultType="Entry">
 		SELECT  * FROM uf_entry WHERE en_type = #{type}
 	</select>
+
+	<!--查询所有支出条目，类型为1-->
+	<select id="getAllExpenEntry" resultMap="BaseResultMap">
+		select * from uf_entry where uf_entry.en_type = 1;
+	</select>
+
 </mapper>
