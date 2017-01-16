@@ -5,14 +5,18 @@ import com.future.domain.Entry;
 import com.future.domain.ExpenditureRecord;
 import com.future.domain.Union;
 import com.future.domain.User;
+import com.future.utils.PageBean;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -69,11 +73,43 @@ public class ExpenditureRecordController extends BaseController {
      */
     @RequestMapping(value="getAllExpendRecord/{currentPage}",method = RequestMethod.GET)
     public ModelAndView getAllExpendRecord(@PathVariable("currentPage") Integer currentPage){
-        /*PageBean pageBean = PageBean.getDefault();
+        PageBean pageBean = PageBean.getDefault();
         pageBean.setCurrentPage(currentPage);
         pageBean = eRecordService.getAllExpendRecord(pageBean);
-        pageBean.calbeginAndEnd();*/
+        pageBean.calbeginAndEnd();
+        String viewname = "ExpenditureRecordViews/getAllExpendRecord";
+        ModelAndView modelAndView = new ModelAndView(viewname);
+        modelAndView.addObject("pageBean",pageBean);
+        Double expendSumMonsy = eRecordService.getAllExpendSumMoney();
+        modelAndView.addObject("expendSumMonsy",expendSumMonsy);
+        //准备数据，工会和条目
+        List<Entry> entryList = entryService.getAllExpenEntry();
+        List<Union> unionList = unionService.findAll();
+        modelAndView.addObject("entryList",entryList);
+        modelAndView.addObject("unionList",unionList);
 
-        return null;
+        return modelAndView;
+    }
+
+    @RequestMapping(value="getConditionExpendRecord/{currentPage}")
+    public void getConditionExpendRecord(@PathVariable("currentPage") Integer currentPage,
+                                         @RequestParam("date1") String date1,
+                                         @RequestParam("date2") String date2,
+                                         @RequestParam("un_id") Integer un_id,
+                                         @RequestParam("en_id") Integer en_id
+                                         ){
+        SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
+        Date date3 = null;
+        Date date4 = null;
+        try {
+            date3 = sf.parse(date1);
+            date4 = sf.parse(date2);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        System.out.println(date3);
+        System.out.println(date4);
+        System.out.println(un_id);
+        System.out.println(en_id);
     }
 }
