@@ -13,15 +13,21 @@
 </head>
 <body>
     <form action="/Unionfinance/union/findByType">
-        <c:if test="${type == null}">
-
+        <c:if test="${type == null or type == 0}">
+            <select name="type" >
+                <option value="0">拨款</option>
+                <option value="1">支出</option>
+            </select>
         </c:if>
-        <select name="type" >
-            <option value="0">拨款</option>
-            <option value="1">支出</option>
-        </select>
+        <c:if test="${type == 1}">
+            <select name="type" >
+                <option value="1">支出</option>
+                <option value="0">拨款</option>
+            </select>
+        </c:if>
         <input type="submit" value="提交">
     </form>
+
     <table>
         <tr>
             <th>序号</th>

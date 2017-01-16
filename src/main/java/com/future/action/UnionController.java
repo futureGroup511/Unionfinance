@@ -41,7 +41,6 @@ public class UnionController extends BaseController{
     public String repeat(@RequestParam("name")String name){
         String result="no";
         List<Union> unions = unionService.findAll();
-
         for (Union union:unions)
             if(union.getUn_name().equals(name)) result ="yes";
         return result;

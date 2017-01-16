@@ -8,7 +8,9 @@
 		<result column="en_redundancy" property="en_redundancy" jdbcType="VARCHAR" />
 
 	</resultMap>
-	<insert id="add" parameterType="Entry">
+
+
+	<insert id="add" parameterType="Entry" useGeneratedKeys="true" keyProperty="en_id">
 		INSERT  INTO uf_entry(en_type,en_name) VALUES(#{en_type},#{en_name})
 	</insert>
 
