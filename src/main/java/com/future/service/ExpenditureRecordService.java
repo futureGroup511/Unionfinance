@@ -15,4 +15,5 @@ public interface ExpenditureRecordService {
      * @param expendRecord
      */
     void insert(ExpenditureRecord expendRecord);
+
 }

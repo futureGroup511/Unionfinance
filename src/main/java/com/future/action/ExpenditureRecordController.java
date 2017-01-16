@@ -7,6 +7,7 @@ import com.future.domain.Union;
 import com.future.domain.User;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -52,9 +53,27 @@ public class ExpenditureRecordController extends BaseController {
         httpSession.setAttribute("user",user);
         //======
         expendRecord.setEr_user((User)httpSession.getAttribute("user"));
-        System.out.println(expendRecord);
         eRecordService.insert(expendRecord);
-
+        //支出之后要显示本次支出金额，和总金额
+        //xx工会 xx日期  支出 xx元，现于额
+        Union union = unionService.findById(expendRecord.getEr_union().getUn_id());
+        Date date = new Date();
+        String money = expendRecord.getEr_money() + "";
+        //先算收入，在算支出，最后相减
+        Double sumMoney = null;
     }
 
+    /**
+     * 查看支出记录
+     * @return
+     */
+    @RequestMapping(value="getAllExpendRecord/{currentPage}",method = RequestMethod.GET)
+    public ModelAndView getAllExpendRecord(@PathVariable("currentPage") Integer currentPage){
+        /*PageBean pageBean = PageBean.getDefault();
+        pageBean.setCurrentPage(currentPage);
+        pageBean = eRecordService.getAllExpendRecord(pageBean);
+        pageBean.calbeginAndEnd();*/
+
+        return null;
+    }
 }
