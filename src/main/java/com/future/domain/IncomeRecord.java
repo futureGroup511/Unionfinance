@@ -13,6 +13,7 @@ public class IncomeRecord {
 	private Double ir_money;//金额
 	private User ir_user; //拨款人
 	private Union ir_union; //公会
+	private String ir_redundancy;//备注
 	public Integer getIr_id() {
 		return ir_id;
 	}
@@ -53,5 +54,13 @@ public class IncomeRecord {
 
 	public void setIr_union(Union ir_union) {
 		this.ir_union = ir_union;
+	}
+
+	public String getIr_redundancy() {
+		return ir_redundancy;
+	}
+
+	public void setIr_redundancy(String ir_redundancy) {
+		this.ir_redundancy = ir_redundancy;
 	}
 }

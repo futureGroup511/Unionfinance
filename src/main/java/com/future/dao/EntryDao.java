@@ -1,13 +1,27 @@
 package com.future.dao;
 
+import com.future.domain.Entry;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
- * ÌõÄ¿
- * @author Å£ä¢Åô
+ * æ¡ç›®
+ * @author ç‰›æ´§é¹
  *
  */
 @Repository
 public interface EntryDao {
+
+    void add(Entry entry);
+
+    void  deleteById(Integer id);
+
+    void update(Entry entry);
+
+    List<Entry> findAll();
+    List<Entry> findByTyep(Integer type);
+    Entry findById(Integer id);
+
 
 }

@@ -4,12 +4,13 @@ import com.future.domain.IncomeRecord;
 import org.springframework.stereotype.Repository;
 
 /**
- * ÊÕÈë¼ÇÂ¼
- * @author Å£ä¢Åô
+ * ï¿½ï¿½ï¿½ï¿½ï¿½Â¼
+ * @author Å£ï¿½ï¿½ï¿½
  *
  */
 @Repository
 public interface IncomeRecordDao {
 
     void add(IncomeRecord incomeRecord);
+
 }

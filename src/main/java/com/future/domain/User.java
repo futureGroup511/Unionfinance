@@ -63,6 +63,33 @@ public class User {
 	public void setUser_union(Union user_union) {
 		this.user_union = user_union;
 	}
-	
-	
+
+
+	public static User getDefaultUser(){
+		Union union = new Union();
+		union.setUn_id(1);
+		User  user = new User();
+		user.setUser_name("张三");
+		user.setUser_num("zhangsan");
+		user.setUser_password("123");
+		user.setUser_phonenumber("1111111");
+		user.setUser_redundancy("冗余字段");
+		user.setUser_union(union);
+		user.setUser_type(1);
+		return  user;
+	}
+
+	@Override
+	public String toString() {
+		return "User{" +
+				"user_id=" + user_id +
+				", user_num='" + user_num + '\'' +
+				", user_password='" + user_password + '\'' +
+				", user_phonenumber='" + user_phonenumber + '\'' +
+				", user_name='" + user_name + '\'' +
+				", user_redundancy='" + user_redundancy + '\'' +
+				", user_union=" + user_union +
+				", user_type=" + user_type +
+				'}';
+	}
 }
