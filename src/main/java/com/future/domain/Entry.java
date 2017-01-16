@@ -38,4 +38,15 @@ public class Entry {
 	public static Entry newInstance(){
 		return new Entry();
 	}
+
+	@Override
+	public String toString() {
+		return "Entry{" +
+				"en_id=" + en_id +
+				", en_type=" + en_type +
+				", en_name='" + en_name + '\'' +
+				", en_redundancy='" + en_redundancy + '\'' +
+				'}';
+	}
 }
+

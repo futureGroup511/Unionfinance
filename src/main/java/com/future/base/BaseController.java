@@ -26,5 +26,6 @@ public class BaseController {
 	@Autowired
 	protected UnionService unionService;
 	
-	@Autowired UserService userService;
+	@Autowired
+	protected UserService userService;
 }

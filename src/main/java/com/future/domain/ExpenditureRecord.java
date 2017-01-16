@@ -13,6 +13,16 @@ public class ExpenditureRecord {
 	private String er_accour_repour; //报账人
 	private User er_user; //支出人
 	private Union er_union; //工会
+	private String er_redundancy;
+
+	public String getEr_redundancy() {
+		return er_redundancy;
+	}
+
+	public void setEr_redundancy(String er_redundancy) {
+		this.er_redundancy = er_redundancy;
+	}
+
 	public Integer getEr_id() {
 		return er_id;
 	}

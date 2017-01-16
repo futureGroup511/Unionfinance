@@ -8,5 +8,29 @@
 		<result column="en_redundancy" property="en_redundancy" jdbcType="VARCHAR" />
 
 	</resultMap>
-	
+
+
+	<insert id="add" parameterType="Entry" useGeneratedKeys="true" keyProperty="en_id">
+		INSERT  INTO uf_entry(en_type,en_name) VALUES(#{en_type},#{en_name})
+	</insert>
+
+	<delete id="deleteById" parameterType="int">
+		DELETE FROM uf_entry WHERE en_id = #{id}
+	</delete>
+
+	<update id="update" parameterType="Entry" >
+		UPDATE uf_entry SET en_name = #{en_name} WHERE en_id = #{en_id}
+	</update>
+
+	<select id="findAll" resultType="Entry">
+		SELECT * FROM uf_entry
+	</select>
+
+	<select id="findById" parameterType="int" resultType="Entry">
+		SELECT * FROM uf_entry WHERE en_id = #{en_id}
+	</select>
+
+	<select id="findByTyep" parameterType="int" resultType="Entry">
+		SELECT  * FROM uf_entry WHERE en_type = #{type}
+	</select>
 </mapper>
