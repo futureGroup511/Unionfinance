@@ -1,15 +1,34 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%
+    //得到url的根路径
+    String path = request.getContextPath();
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+            + path +"/";
+%>
 <html>
 <head>
     <title>查看拨款记录</title>
+    <link rel="stylesheet" href="<%= basePath%>css/bootstrapDatepickr-1.0.0.css">
+    <link rel="stylesheet" href="<%= basePath%>css/bootstrap.min.css">
+    <link rel="stylesheet" href="<%= basePath%>css/font-awesome.min.css">
+
+    <script src="<%= basePath%>js/jquery-1.7.2.min.js"></script>
+    <script src="<%= basePath%>js/bootstrap.min.js"></script>
+    <script src="<%= basePath%>js/bootstrapDatepickr-1.0.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#calendarStart").bootstrapDatepickr({date_format: "Y-m-d"});
+            $("#calendarEnd").bootstrapDatepickr({date_format: "Y-m-d"});
+        });
+    </script>
 </head>
 <body>
 
 查看拨款记录
 <form action="${pageContext.request.contextPath}/incomerecord/getConditionIncomeRecord/1" method="post">
-    起止日期：<input type="text" name="date1">~<input type="text" name="date2">
+    起止日期：<input id="calendarStart" type="text" name="date1">~<input id="calendarEnd" type="text" name="date2">
     单位：<select name="un_id" >
     <option value="0">请选择</option>
     <c:forEach items="${unionList}" var="union">

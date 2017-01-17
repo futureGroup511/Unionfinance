@@ -2,15 +2,34 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <script src="${pageContext.request.contextPath}/js/jquery-2.1.4.js"></script>
+<%
+    //得到url的根路径
+    String path = request.getContextPath();
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+            + path +"/";
+%>
 <html>
 <head>
     <title>条件查看支出记录</title>
+    <link rel="stylesheet" href="<%= basePath%>css/bootstrapDatepickr-1.0.0.css">
+    <link rel="stylesheet" href="<%= basePath%>css/bootstrap.min.css">
+    <link rel="stylesheet" href="<%= basePath%>css/font-awesome.min.css">
+
+    <script src="<%= basePath%>js/jquery-1.7.2.min.js"></script>
+    <script src="<%= basePath%>js/bootstrap.min.js"></script>
+    <script src="<%= basePath%>js/bootstrapDatepickr-1.0.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#calendarStart").bootstrapDatepickr({date_format: "Y-m-d"});
+            $("#calendarEnd").bootstrapDatepickr({date_format: "Y-m-d"});
+        });
+    </script>
 </head>
 <body>
 
 条件查看支出记录
 <form id="form" action="${pageContext.request.contextPath}/expenditurerecord/getConditionExpendRecord/1" method="post">
-    起止日期：<input type="text" id="date1" name="date1" value="${date11}">~<input type="text" name="date2" value="${date22}">
+    起止日期：<input type="text" id="calendarStart" name="date1" value="${date11}">~<input id="calendarEnd" type="text" name="date2" value="${date22}">
     单位：<select name="un_id" >
     <option value="0">请选择</option>
         <c:forEach items="${unionList}" var="union">
