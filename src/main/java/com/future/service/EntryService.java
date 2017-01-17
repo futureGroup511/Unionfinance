@@ -22,4 +22,10 @@ public interface EntryService {
     Entry findById(Integer id);
 
     List<Entry> findByTyep(Integer type);
+
+    /**
+     * 查询所有支出条目，类型为1
+     * @return
+     */
+    List<Entry> getAllExpenEntry();
 }

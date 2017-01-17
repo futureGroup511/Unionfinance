@@ -3,6 +3,7 @@ package com.future.domain;
 import java.util.Date;
 
 /**
+ * 收入
  * @author 牛洧鹏
  */
 public class IncomeRecord {

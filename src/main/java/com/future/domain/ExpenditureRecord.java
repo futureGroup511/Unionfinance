@@ -9,7 +9,7 @@ public class ExpenditureRecord {
 	private Integer er_id; //id
 	private Date er_date; //时间
 	private Entry er_entry; //条目
-	private Integer er_money; //金额
+	private Double er_money; //金额
 	private String er_accour_repour; //报账人
 	private User er_user; //支出人
 	private Union er_union; //工会
@@ -41,10 +41,10 @@ public class ExpenditureRecord {
 	public void setEr_entry(Entry er_entry) {
 		this.er_entry = er_entry;
 	}
-	public Integer getEr_money() {
+	public Double getEr_money() {
 		return er_money;
 	}
-	public void setEr_money(Integer er_money) {
+	public void setEr_money(Double er_money) {
 		this.er_money = er_money;
 	}
 	public String getEr_accour_repour() {
@@ -67,4 +67,19 @@ public class ExpenditureRecord {
 	public void setEr_union(Union er_union) {
 		this.er_union = er_union;
 	}
+
+	@Override
+	public String toString() {
+		return "ExpenditureRecord{" +
+				"er_id=" + er_id +
+				", er_date=" + er_date +
+				", er_entry=" + er_entry +
+				", er_money=" + er_money +
+				", er_accour_repour='" + er_accour_repour + '\'' +
+				", er_user=" + er_user +
+				", er_union=" + er_union +
+				", er_redundancy='" + er_redundancy + '\'' +
+				'}';
+	}
+
 }

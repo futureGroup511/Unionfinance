@@ -23,5 +23,9 @@ public interface EntryDao {
     List<Entry> findByTyep(Integer type);
     Entry findById(Integer id);
 
-
+    /**
+     * 查询所有支出条目，类型为1
+     * @return
+     */
+    List<Entry> getAllExpenEntry();
 }

@@ -3,10 +3,11 @@
 <mapper namespace="com.future.dao.ExpenditureRecordDao">
 
 	<resultMap id="BaseResultMap" type="com.future.domain.ExpenditureRecord">
-		<id column="er_id" property="ir_id" jdbcType="INTEGER" />
-		<result column="er_date" property="ir_date" jdbcType="DATE" />
-		<result column="er_money" property="ir_money" jdbcType="DOUBLE" />
+		<id column="er_id" property="er_id" jdbcType="INTEGER" />
+		<result column="er_date" property="er_date" jdbcType="DATE" />
+		<result column="er_money" property="er_money" jdbcType="DOUBLE" />
 		<result column="er_accour_repour" property="er_accour_repour" jdbcType="VARCHAR" />
+		<result column="er_redundancy" property="er_redundancy" jdbcType="VARCHAR" />
 	</resultMap>
     <resultMap id="ExpenseRecordMap" type="com.future.domain.ExpenditureRecord">
         <id column="er_id" property="er_id"></id>
@@ -74,5 +75,44 @@
 
 
 
+
+
+	<insert id="insert" parameterType="com.future.domain.ExpenditureRecord">
+		INSERT INTO uf_expenditurerecord VALUES (null,#{er_date},#{er_entry.en_id},#{er_money},#{er_user.user_id},#{er_accour_repour},#{er_redundancy},#{er_union.un_id})
+	</insert>
+
+
+	<resultMap id="ExpendListMap" type="com.future.domain.ExpenditureRecord" extends="BaseResultMap">
+		<association property="er_user" javaType="com.future.domain.User">
+			<id property="user_id" column="user_id"></id>
+			<result property="user_name" column="user_name"></result>
+		</association>
+		<association property="er_union" javaType="com.future.domain.Union">
+			<id property="un_id" column="un_id"></id>
+			<result property="un_name" column="un_name"></result>
+		</association>
+		<association property="er_entry" javaType="com.future.domain.Entry">
+			<id property="en_id" column="en_id"></id>
+			<result property="en_name" column="en_name"></result>
+		</association>
+	</resultMap>
+
+	<!--* 分页查询支出记录-->
+	<select id="getAllExpendList" parameterType="com.future.utils.PageBean" resultMap="ExpendListMap">
+		select expend.*,un.*,user.*,uf_entry.* from uf_expenditurerecord expend JOIN uf_union un on expend.er_union_id = un.un_id
+		JOIN uf_user user on expend.er_user_id = user.user_id JOIN uf_entry on expend.er_entry_id = uf_entry.en_id
+		limit #{0},#{1}
+	</select>
+
+
+	<!--* 查询支出总记录数量-->
+	<select id="getAllExpendListNum" resultType="int">
+		select count(*) from uf_expenditurerecord
+	</select>
+
+	<!--* 查询支出总金额-->
+	<select id="getAllExpendSumMoney" resultType="java.lang.Double">
+		select sum(expend.er_money) from uf_expenditurerecord expend
+	</select>
 
 </mapper>
