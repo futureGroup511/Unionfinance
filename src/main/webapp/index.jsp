@@ -11,7 +11,7 @@
     -->
 
     <a href="user/inspectIncomeByCondition?currentPage=1&entryId=&startDate=&endDate=">查看收入情况</a><br/>
-    <a href="">查看支出情况</a><br/>
+    <a href="user/inspectExpenseByCondition?currentPage=1&entryId=&startDate=&endDate=">查看支出情况</a><br/>
 
 
 <a href= "/Unionfinance/incomerecord/incomerecordview">拨款</a>

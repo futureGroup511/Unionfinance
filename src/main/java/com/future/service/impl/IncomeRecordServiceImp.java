@@ -82,6 +82,10 @@ public class IncomeRecordServiceImp implements IncomeRecordService {
 	 * @return
 	 */
 	public Double getConditionIncomeRecordSumMoney(String date1, String date2, Integer un_id, Integer en_id) {
-		return incomeRecordDao.getConditionIncomeRecordSumMoney(date1,date2,un_id,en_id);
+		return incomeRecordDao.getConditionIncomeRecordSumMoney(date1, date2, un_id, en_id);
+	}
+
+	public int countAllIncome(Integer unionId) {
+		return incomeRecordDao.countAllIncome(unionId);
 	}
 }

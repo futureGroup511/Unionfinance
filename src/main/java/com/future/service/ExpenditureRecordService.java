@@ -3,22 +3,30 @@ package com.future.service;
 import com.future.domain.ExpenditureRecord;
 import com.future.utils.PageBean;
 
+import java.util.List;
+import java.util.Map;
+
 /**
- * Ö§³ö¼ÇÂ¼
- * @author Å£ä¢Åô
+ * Ö§ï¿½ï¿½ï¿½ï¿½Â¼
+ * @author Å£ï¿½ï¿½ï¿?
  *
  */
 public interface ExpenditureRecordService {
 
+    int queryExpenseRecordCount(Map<String,Object> paramMap);
+
+    List<ExpenditureRecord> queryExpenseRecord(Map<String,Object> paramMap);
+
+    int countAllExpense(Integer unionId);
 
     /**
-     * Ìí¼ÓÖ§³ö¼ÇÂ¼
+     * ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Â?
      * @param expendRecord
      */
     void insert(ExpenditureRecord expendRecord);
 
     /**
-     * ·ÖÒ³²éÑ¯ËùÓÐÖ§³ö¼ÇÂ¼
+     * ï¿½ï¿½Ò³ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Â¼
      * @param pageBean
      * @return
      */
@@ -26,7 +34,6 @@ public interface ExpenditureRecordService {
 
     /**
      * ²éÑ¯ËùÓÐÖ§½ð¶î
-     * @return
      */
     Double getAllExpendSumMoney();
 

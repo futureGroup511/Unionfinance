@@ -5,35 +5,36 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
-/**
- * ??????
- * @author ????
- *
- */
 @Repository
 public interface ExpenditureRecordDao {
 
+    int queryExpenseRecordCount(Map<String,Object> paramMap);
+
+    List<ExpenditureRecord> queryExpenseRecord(Map<String,Object> paramMap);
+
+    int countAllExpense(Integer unionId);
     /**
-     * Ìí¼ÓÖ§³ö¼ÇÂ¼
+     * ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Â?
      * @param expendRecord
      */
     void insert(ExpenditureRecord expendRecord);
 
     /**
-     * ·ÖÒ³²éÑ¯Ö§³ö¼ÇÂ¼
+     * ï¿½ï¿½Ò³ï¿½ï¿½Ñ¯Ö§ï¿½ï¿½ï¿½ï¿½Â¼
      * @return
      */
     List<ExpenditureRecord> getAllExpendList(int a,Integer b);
 
     /**
-     * ²éÑ¯Ö§³ö×Ü¼ÇÂ¼ÊýÁ¿
+     * ï¿½ï¿½Ñ¯Ö§ï¿½ï¿½ï¿½Ü¼ï¿½Â¼ï¿½ï¿½ï¿½ï¿½
      * @return
      */
     int getAllExpendListNum();
 
     /**
-     * ²éÑ¯Ö§³ö×Ü½ð¶î
+     * ï¿½ï¿½Ñ¯Ö§ï¿½ï¿½ï¿½Ü½ï¿½ï¿?
      * @return
      */
     Double getAllExpendSumMoney();

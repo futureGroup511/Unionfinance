@@ -52,4 +52,7 @@ public interface IncomeRecordService {
      * @return
      */
     Double getConditionIncomeRecordSumMoney(String date1, String date2, Integer un_id, Integer en_id);
+
+    int countAllIncome(Integer unionId);
+
 }

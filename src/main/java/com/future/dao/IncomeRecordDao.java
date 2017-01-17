@@ -71,4 +71,7 @@ public interface IncomeRecordDao {
      * @return
      */
     Double getConditionIncomeRecordSumMoney(@Param("date3") String date3, @Param("date4") String date4, @Param("un_id") int un_id, @Param("en_id") int en_id);
+
+    int countAllIncome(Integer unionId);
+
 }

@@ -50,6 +50,13 @@
         </if>
     </select>
 
+    <!-- 计算 某个公会的总的收入 -->
+    <select id="countAllIncome" resultType="int">
+        select sum(ir_money)
+        from uf_incomerecord
+        WHERE 1=1
+    </select>
+
     <select id="queryIncomeRecords" resultMap="IncomeRecordMap">
         select ir_id,ir_date,ir_money,
         user_id,user_name,un_id, un_name,en_id,en_name
@@ -64,6 +71,7 @@
         <if test="entryId!=null">
             AND ir_entry_id = #{entryId}
         </if>
+        ORDER BY ir_date DESC
         limit #{page.beginRecordIndex},#{page.pageSize}
     </select>
 

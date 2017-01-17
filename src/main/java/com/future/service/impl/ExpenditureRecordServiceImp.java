@@ -1,7 +1,7 @@
 package com.future.service.impl;
 
-import com.future.dao.ExpenditureRecordDao;
 import com.future.domain.ExpenditureRecord;
+import com.future.dao.ExpenditureRecordDao;
 import com.future.service.ExpenditureRecordService;
 import com.future.utils.PageBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,9 +10,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+import java.util.Map;
+
 /**
- * Ö§³ö¼ÇÂ¼
- * @author Å£ä¢Åô
+ * Ö§ï¿½ï¿½ï¿½ï¿½Â¼
+ * @author Å£ï¿½ï¿½ï¿½
  *
  */
 @Service
@@ -22,9 +24,20 @@ public class ExpenditureRecordServiceImp  implements ExpenditureRecordService{
 	@Autowired
 	private ExpenditureRecordDao eDao;
 
+	public int queryExpenseRecordCount(Map<String, Object> paramMap) {
+		return eDao.queryExpenseRecordCount(paramMap);
+	}
+
+	public List<ExpenditureRecord> queryExpenseRecord(Map<String, Object> paramMap) {
+		return eDao.queryExpenseRecord(paramMap);
+	}
+
+    public int countAllExpense(Integer unionId) {
+        return eDao.countAllExpense(unionId);
+    }
 
 	/**
-	 * Ìí¼ÓÖ§³ö¼ÇÂ¼
+	 * ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Â¼
 	 * @param expendRecord
 	 */
 	public void insert(ExpenditureRecord expendRecord) {
@@ -32,14 +45,14 @@ public class ExpenditureRecordServiceImp  implements ExpenditureRecordService{
 	}
 
 	/**
-	 * ·ÖÒ³²éÑ¯Ö§³ö¼ÇÂ¼
+	 * ï¿½ï¿½Ò³ï¿½ï¿½Ñ¯Ö§ï¿½ï¿½ï¿½ï¿½Â¼
 	 * @param pageBean
 	 * @return
 	 */
 	public PageBean getAllExpendRecord(PageBean pageBean) {
-		//1¡¢×Ü¼ÇÂ¼
+		//1ï¿½ï¿½ï¿½Ü¼ï¿½Â¼
 		List<ExpenditureRecord> expendList = eDao.getAllExpendList(((pageBean.getCurrentPage()-1)*pageBean.getPageSize()),pageBean.getPageSize());
-		//2.×Ü¼ÇÂ¼ÊýÁ¿
+		//2.ï¿½Ü¼ï¿½Â¼ï¿½ï¿½ï¿½ï¿½
 		int count = eDao.getAllExpendListNum();
 		pageBean.setRecordlist(expendList);
 		pageBean.setRecordCount(count);
@@ -49,7 +62,7 @@ public class ExpenditureRecordServiceImp  implements ExpenditureRecordService{
 	}
 
 	/**
-	 * ²éÑ¯×Ü½ð¶î
+	 * ï¿½ï¿½Ñ¯ï¿½Ü½ï¿½ï¿½
 	 * @return
 	 */
 	public Double getAllExpendSumMoney() {

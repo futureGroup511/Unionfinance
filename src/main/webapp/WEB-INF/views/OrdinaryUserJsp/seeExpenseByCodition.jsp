@@ -27,7 +27,7 @@
 </head>
 <body>
 <!-- currentPage=1&entryId=&startDate=&endDate= -->
-<form action="inspectIncomeByCondition">
+<form action="inspectExpenseByCondition">
     起始日期：<input id="calendarStart" name="startDate"/>
     结束日期：<input id="calendarEnd" name="endDate"/>
     项目：
@@ -40,19 +40,20 @@
 </form>
 <table>
     <tr>
-        <th align="center">拨款日期</th>
-        <th align="center">拨款金额</th>
-        <th align="center">拨款人</th>
-        <th align="center">所给单位</th>
-        <th align="center">拨款项目</th>
+        <th align="center">支出日期</th>
+        <th align="center">支出金额</th>
+        <th align="center">花款人</th>
+        <th align="center">花款人公会</th>
+        <th align="center">花款项目</th>
+        <th align="center">报账人</th>
     </tr>
-    <c:forEach items="${requestScope.page.recordlist }" var="incomeRecord">
+    <c:forEach items="${requestScope.page.recordlist }" var="expenseRecord">
         <tr>
-            <td><fmt:formatDate value="${incomeRecord.ir_date}" pattern="yyyy-MM-dd"></fmt:formatDate></td>
-            <td>${incomeRecord.ir_money}元</td>
-            <td>${incomeRecord.ir_user.user_name}</td>
-            <td>${incomeRecord.ir_union.un_name}</td>
-            <td>${incomeRecord.ir_entry.en_name}</td>
+            <td><fmt:formatDate value="${expenseRecord.er_date}" pattern="yyyy-MM-dd"></fmt:formatDate></td>
+            <td>${expenseRecord.er_money}元</td>
+            <td>${expenseRecord.er_user.user_name}</td>
+            <td>${expenseRecord.er_union.un_name}</td>
+            <td>${expenseRecord.er_entry.en_name}</td>
         </tr>
     </c:forEach>
 
