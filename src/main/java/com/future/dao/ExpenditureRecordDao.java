@@ -1,13 +1,23 @@
 package com.future.dao;
 
+import com.future.domain.ExpenditureRecord;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+import java.util.Map;
+
 /**
- * Ö§³ö¼ÇÂ¼
- * @author Å£ä¢Åô
+ * Ö§ï¿½ï¿½ï¿½ï¿½Â¼
+ * @author Å£ï¿½ï¿½ï¿½
  *
  */
 @Repository
 public interface ExpenditureRecordDao {
 
+
+    int queryExpenseRecordCount(Map<String,Object> paramMap);
+
+    List<ExpenditureRecord> queryExpenseRecord(Map<String,Object> paramMap);
+
+    int countAllExpense(Integer unionId);
 }

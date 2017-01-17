@@ -34,4 +34,8 @@ public class IncomeRecordServiceImp implements IncomeRecordService {
     public List<IncomeRecord> queryIncomeRecords(Map<String, Object> paramMap) {
 		return incomeRecordDao.queryIncomeRecords(paramMap);
 	}
+
+	public int countAllIncome(Integer unionId) {
+		return incomeRecordDao.countAllIncome(unionId);
+	}
 }

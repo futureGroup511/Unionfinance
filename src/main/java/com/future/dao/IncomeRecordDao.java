@@ -21,4 +21,5 @@ public interface IncomeRecordDao {
 
     List<IncomeRecord> queryIncomeRecords(Map<String, Object> paramMap);
 
+    int countAllIncome(Integer unionId);
 }

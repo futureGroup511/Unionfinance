@@ -1,11 +1,78 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.future.dao.ExpenditureRecordDao">
+
 	<resultMap id="BaseResultMap" type="com.future.domain.ExpenditureRecord">
 		<id column="er_id" property="ir_id" jdbcType="INTEGER" />
 		<result column="er_date" property="ir_date" jdbcType="DATE" />
 		<result column="er_money" property="ir_money" jdbcType="DOUBLE" />
 		<result column="er_accour_repour" property="er_accour_repour" jdbcType="VARCHAR" />
 	</resultMap>
-	
+    <resultMap id="ExpenseRecordMap" type="com.future.domain.ExpenditureRecord">
+        <id column="er_id" property="er_id"></id>
+        <result column="er_date" property="er_date"></result>
+        <result column="er_money" property="er_money"></result>
+        <result column="er_accour_repour" property="er_accour_repour"></result>
+        <association property="er_user" javaType="com.future.domain.User">
+            <id property="user_id" column="user_id"></id>
+            <result property="user_name" column="user_name"></result>
+        </association>
+        <association property="er_union" javaType="com.future.domain.Union">
+            <id property="un_id" column="un_id"></id>
+            <result property="un_name" column="un_name"></result>
+        </association>
+        <association property="er_entry" javaType="com.future.domain.Entry">
+            <id property="en_id" column="en_id"></id>
+            <result property="en_name" column="en_name"></result>
+        </association>
+    </resultMap>
+
+	<!--
+		查询该公会 花费的记录条数
+	-->
+	<select id="queryExpenseRecordCount" resultType="int">
+	select count(*)
+	from uf_expenditurerecord
+	LEFT OUTER JOIN uf_union on uf_expenditurerecord.er_union_id = uf_union.un_id
+	LEFT OUTER JOIN uf_user on uf_expenditurerecord.er_user_id = uf_user.user_id
+	LEFT OUTER JOIN uf_entry on uf_expenditurerecord.er_entry_id = uf_entry.en_id
+	WHERE 1=1
+	<if test="startDate != endDate">
+		AND er_date BETWEEN #{startDate} AND #{endDate}
+	</if>
+	<if test="entryId!=null">
+		AND er_entry_id = #{entryId}
+	</if>
+</select>
+
+	<select id="queryExpenseRecord" resultMap="ExpenseRecordMap">
+		select er_id, er_date, er_money,er_accour_repour,
+        user_id,user_name,un_id, un_name,en_id,en_name
+		from uf_expenditurerecord
+		LEFT OUTER JOIN uf_union on uf_expenditurerecord.er_union_id = uf_union.un_id
+		LEFT OUTER JOIN uf_user on uf_expenditurerecord.er_user_id = uf_user.user_id
+		LEFT OUTER JOIN uf_entry on uf_expenditurerecord.er_entry_id = uf_entry.en_id
+		WHERE 1=1
+		<if test="startDate != endDate">
+			AND er_date BETWEEN #{startDate} AND #{endDate}
+		</if>
+		<if test="entryId!=null">
+			AND er_entry_id = #{entryId}
+		</if>
+        ORDER BY er_date DESC
+        limit #{page.beginRecordIndex},#{page.pageSize}
+    </select>
+
+
+
+    <!-- 计算某工会的 总花费-->
+    <select id="countAllExpense" resultType="int">
+        select sum(er_money)
+        from uf_expenditurerecord
+        WHERE 1=1
+    </select>
+
+
+
+
 </mapper>

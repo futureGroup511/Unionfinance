@@ -19,4 +19,5 @@ public interface IncomeRecordService {
     //按指定条件 查询收入记录情况
     List<IncomeRecord> queryIncomeRecords(Map<String, Object> paramMap);
 
+    int countAllIncome(Integer unionId);
 }
