@@ -5,6 +5,7 @@
 <html>
 <head>
     <title>添加支出记录</title>
+    <script src="${pageContext.request.contextPath}/js/addentry.js"></script>
     <script type="text/javascript">
     $(document).ready(function(){
         $("#tijiao").click(function(){
@@ -40,11 +41,11 @@
             </c:forEach>
         </select>
     <br>
-    条目：<select name="er_entry.en_id">
+    条目：<select name="er_entry.en_id" id="entry">
             <c:forEach items="${entryList}" var="entry">
                 <option value="${entry.en_id}">${entry.en_name}</option>
             </c:forEach>
-        </select><br>
+        </select><a href="#" onclick="addEntry(1)">添加条目</a><br>
     金额：<input id="money" type="text" name="er_money"><br>
     报账人：<input id="repour" type="text" name="er_accour_repour"><br>
     备注：<input type="text" name="er_redundancy"><br>
