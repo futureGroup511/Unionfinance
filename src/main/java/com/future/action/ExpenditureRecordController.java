@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -92,24 +91,32 @@ public class ExpenditureRecordController extends BaseController {
     }
 
     @RequestMapping(value="getConditionExpendRecord/{currentPage}")
-    public void getConditionExpendRecord(@PathVariable("currentPage") Integer currentPage,
-                                         @RequestParam("date1") String date1,
-                                         @RequestParam("date2") String date2,
-                                         @RequestParam("un_id") Integer un_id,
-                                         @RequestParam("en_id") Integer en_id
+    public ModelAndView getConditionExpendRecord(@PathVariable("currentPage") Integer currentPage,
+                                         @RequestParam(value="date1",required = false) String date1,
+                                         @RequestParam(value="date2",required = false) String date2,
+                                         @RequestParam(value="un_id",required = false) Integer un_id,
+                                         @RequestParam(value="en_id",required = false) Integer en_id
                                          ){
+        String viewname = "ExpenditureRecordViews/getConditionExpendRecord";
+        ModelAndView modelAndView = new ModelAndView(viewname);
         SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
-        Date date3 = null;
-        Date date4 = null;
-        try {
-            date3 = sf.parse(date1);
-            date4 = sf.parse(date2);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        System.out.println(date3);
-        System.out.println(date4);
-        System.out.println(un_id);
-        System.out.println(en_id);
+        PageBean pageBean = PageBean.getDefault();
+        pageBean.setCurrentPage(currentPage);
+        pageBean = eRecordService.getConditionExpendRecord(pageBean,date1,date2,un_id,en_id);
+        pageBean.calbeginAndEnd();
+        modelAndView.addObject("pageBean",pageBean);
+        Double expendSumMonsy = eRecordService.getConditionExpendSumMoney(date1,date2,un_id,en_id);
+        modelAndView.addObject("expendSumMonsy",expendSumMonsy);
+        //准备数据，工会和条目
+        List<Entry> entryList = entryService.getAllExpenEntry();
+        List<Union> unionList = unionService.findAll();
+        modelAndView.addObject("entryList",entryList);
+        modelAndView.addObject("unionList",unionList);
+        //放入原本起止日期，工会，条目
+        modelAndView.addObject("date11",date1);
+        modelAndView.addObject("date22",date2);
+        modelAndView.addObject("un_id",un_id);
+        modelAndView.addObject("en_id",en_id);
+        return modelAndView;
     }
 }
