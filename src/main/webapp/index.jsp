@@ -27,7 +27,7 @@
 <br>
 <a href="${pageContext.request.contextPath}/expenditurerecord/addExpendUI">支出</a>
 <a href="${pageContext.request.contextPath}/expenditurerecord/getAllExpendRecord/1">查看支出</a>
-<a href="${pageContext.request.contextPath}/expenditurerecord/addExpendUI">查看收入</a>
+<a href="${pageContext.request.contextPath}/incomerecord/getAllIncomeRecord/1">查看收入</a>
 
 
 

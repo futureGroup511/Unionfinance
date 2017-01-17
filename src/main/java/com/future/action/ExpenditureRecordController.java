@@ -90,6 +90,15 @@ public class ExpenditureRecordController extends BaseController {
         return modelAndView;
     }
 
+    /**
+     * 条件查询支出记录
+     * @param currentPage
+     * @param date1
+     * @param date2
+     * @param un_id
+     * @param en_id
+     * @return
+     */
     @RequestMapping(value="getConditionExpendRecord/{currentPage}")
     public ModelAndView getConditionExpendRecord(@PathVariable("currentPage") Integer currentPage,
                                          @RequestParam(value="date1",required = false) String date1,

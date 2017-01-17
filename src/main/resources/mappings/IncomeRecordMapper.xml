@@ -13,6 +13,7 @@
         <id property="ir_id" column="ir_id"></id>
         <result property="ir_date" column="ir_date"></result>
         <result property="ir_money" column="ir_money"></result>
+        <result property="ir_redundancy" column="ir_redundancy"></result>
 
         <association property="ir_user" javaType="com.future.domain.User">
             <id property="user_id" column="user_id"></id>
@@ -72,4 +73,92 @@
         INSERT  INTO uf_incomerecord(ir_date,ir_entry_id,ir_money,ir_user_id,ir_union_id,ir_redundancy)
         VALUES (#{ir_date},#{ir_entry.en_id},#{ir_money},#{ir_user.user_id},#{ir_union.un_id},#{ir_redundancy})
     </insert>
+
+
+    <!--* 查询所有拨款记录-->
+    <select id="getAllIncomeRecord" resultMap="IncomeRecordMap">
+        select incomer.*,un.*,user.*,uf_entry.* from uf_incomerecord incomer JOIN uf_union un on incomer.ir_union_id = un.un_id
+        JOIN uf_user user on incomer.ir_user_id = user.user_id JOIN uf_entry on incomer.ir_entry_id = uf_entry.en_id
+        limit #{0},#{1}
+  </select>
+
+    <!--* 查询所有拨款记录得数量-->
+    <select id="getAllIncomeRecordCount" resultType="int">
+      select count(*) from uf_incomerecord
+    </select>
+
+
+    <!--* 查询所有拨款的金额-->
+    <select id="getAllincomeSumMonsy" resultType="java.lang.Double">
+      select sum(incomer.ir_money) from uf_incomerecord incomer
+    </select>
+
+    <!--* 条件查询所有拨款记录-->
+    <select id="getConditionIncomeRecord" resultMap="IncomeRecordMap">
+      select incomer.*,un.*,user.*,uf_entry.* from uf_incomerecord incomer JOIN uf_union un on incomer.ir_union_id = un.un_id
+        JOIN uf_user user on incomer.ir_user_id = user.user_id JOIN uf_entry on incomer.ir_entry_id = uf_entry.en_id
+        <where>
+            <if test="un_id != 0">
+                incomer.ir_union_id=#{un_id}
+            </if>
+            <if test="en_id != 0">
+                and incomer.ir_entry_id=#{en_id}
+            </if>
+            <if test="date3 != ''">
+                and incomer.ir_date <![CDATA[>=]]> #{date3}
+            </if>
+            <if test="date4 != ''" >
+                and incomer.ir_date <![CDATA[<=]]> #{date4}
+            </if>
+            <if test="date3 != '' and date4 !='' ">
+                and incomer.ir_date between #{date3} and #{date4}
+            </if>
+        </where>
+        limit #{a},#{b}
+    </select>
+
+    <!--* 条件查询所有拨款记录总条数-->
+    <select id="getConditionIncomeRecordCount" resultType="int">
+        select count(*) from uf_incomerecord incomer
+        <where>
+            <if test="un_id != 0">
+                incomer.ir_union_id=#{un_id}
+            </if>
+            <if test="en_id != 0">
+                and incomer.ir_entry_id=#{en_id}
+            </if>
+            <if test="date3 != ''">
+                and incomer.ir_date <![CDATA[>=]]> #{date3}
+            </if>
+            <if test="date4 != ''" >
+                and incomer.ir_date <![CDATA[<=]]> #{date4}
+            </if>
+            <if test="date3 != '' and date4 !='' ">
+                and incomer.ir_date between #{date3} and #{date4}
+            </if>
+        </where>
+    </select>
+
+    <!--* 条件查询金额-->
+    <select id="getConditionIncomeRecordSumMoney" resultType="java.lang.Double">
+      select sum(incomer.ir_money) from uf_incomerecord incomer
+        <where>
+            <if test="un_id != 0">
+                incomer.ir_union_id=#{un_id}
+            </if>
+            <if test="en_id != 0">
+                and incomer.ir_entry_id=#{en_id}
+            </if>
+            <if test="date3 != ''">
+                and incomer.ir_date <![CDATA[>=]]> #{date3}
+            </if>
+            <if test="date4 != ''" >
+                and incomer.ir_date <![CDATA[<=]]> #{date4}
+            </if>
+            <if test="date3 != '' and date4 !='' ">
+                and incomer.ir_date between #{date3} and #{date4}
+            </if>
+        </where>
+    </select>
+
 </mapper>
