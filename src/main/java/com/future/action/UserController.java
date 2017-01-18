@@ -36,6 +36,14 @@ public class UserController extends BaseController{
         return "UserViews/loginUI";
     }
 
+    /**
+     *
+     * @param session
+     * @param map
+     * @param username
+     * @param password
+     * @return
+     */
     @RequestMapping(value = "login")
     public String login(HttpSession session,Map<String, String> map, @RequestParam("username") String username, @RequestParam("password") String password){
         //根据用户面密码查询用户
