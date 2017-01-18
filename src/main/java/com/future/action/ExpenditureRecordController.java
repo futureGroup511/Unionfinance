@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -59,9 +58,9 @@ public class ExpenditureRecordController extends BaseController {
         eRecordService.insert(expendRecord);
         //支出之后要显示本次支出金额，和总金额
         //xx工会 xx日期  支出 xx元，现于额
-        Union union = unionService.findById(expendRecord.getEr_union().getUn_id());
-        Date date = new Date();
-        String money = expendRecord.getEr_money() + "";
+        //Union union = unionService.findById(expendRecord.getEr_union().getUn_id());
+        //Date date = new Date();
+        //String money = String.valueOf(expendRecord.getEr_money());
         //先算收入，在算支出，最后相减
         Double sumMoney = null;
     }
@@ -108,7 +107,7 @@ public class ExpenditureRecordController extends BaseController {
                                          ){
         String viewname = "ExpenditureRecordViews/getConditionExpendRecord";
         ModelAndView modelAndView = new ModelAndView(viewname);
-        SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
+        //SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
         PageBean pageBean = PageBean.getDefault();
         pageBean.setCurrentPage(currentPage);
         pageBean = eRecordService.getConditionExpendRecord(pageBean,date1,date2,un_id,en_id);
@@ -127,5 +126,7 @@ public class ExpenditureRecordController extends BaseController {
         modelAndView.addObject("un_id",un_id);
         modelAndView.addObject("en_id",en_id);
         return modelAndView;
+
     }
+
 }

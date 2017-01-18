@@ -41,4 +41,14 @@ public class UserServiceImp implements UserService{
 	public void deleteById(Integer id) {
 		userDao.deleteById(id);
 	}
+
+	/**
+	 * 根据用户面密码查询用户
+	 * @param username
+	 * @param password
+	 * @return
+	 */
+	public User findUserByNameAndPass(String username, String password) {
+		return userDao.findUserByNameAndPass(username,password);
+	}
 }
