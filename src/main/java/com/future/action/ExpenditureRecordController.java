@@ -51,8 +51,8 @@ public class ExpenditureRecordController extends BaseController {
         expendRecord.setEr_date(new Date());
         User user = new User();
         //======将来要删除
-        user.setUser_id(1);
-        httpSession.setAttribute("user",user);
+        //user.setUser_id(1);
+        //httpSession.setAttribute("user",user);
         //======
         expendRecord.setEr_user((User)httpSession.getAttribute("user"));
         eRecordService.insert(expendRecord);
