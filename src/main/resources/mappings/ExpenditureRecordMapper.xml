@@ -101,6 +101,7 @@
 	<select id="getAllExpendList" parameterType="com.future.utils.PageBean" resultMap="ExpendListMap">
 		select expend.*,un.*,user.*,uf_entry.* from uf_expenditurerecord expend JOIN uf_union un on expend.er_union_id = un.un_id
 		JOIN uf_user user on expend.er_user_id = user.user_id JOIN uf_entry on expend.er_entry_id = uf_entry.en_id
+		order by expend.er_date desc
 		limit #{0},#{1}
 	</select>
 
@@ -137,6 +138,7 @@
 				and expend.er_date between #{date3} and #{date4}
 			</if>
 		</where>
+		order by expend.er_date desc
 		limit #{a},#{b}
 	</select>
 

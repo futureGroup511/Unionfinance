@@ -87,6 +87,7 @@
     <select id="getAllIncomeRecord" resultMap="IncomeRecordMap">
         select incomer.*,un.*,user.*,uf_entry.* from uf_incomerecord incomer JOIN uf_union un on incomer.ir_union_id = un.un_id
         JOIN uf_user user on incomer.ir_user_id = user.user_id JOIN uf_entry on incomer.ir_entry_id = uf_entry.en_id
+        order by incomer.ir_date desc
         limit #{0},#{1}
   </select>
 
@@ -122,6 +123,7 @@
                 and incomer.ir_date between #{date3} and #{date4}
             </if>
         </where>
+        order by incomer.ir_date desc
         limit #{a},#{b}
     </select>
 
