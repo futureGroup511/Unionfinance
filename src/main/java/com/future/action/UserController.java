@@ -6,18 +6,19 @@ import com.future.utils.Page;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
-import java.util.List;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 /**
  */
 @Controller
@@ -26,8 +27,43 @@ import java.util.Date;
 public class UserController extends BaseController{
 
 
-    //按 时间段 条目 以及分页的组合进行查询 收入情况
+    /**
+     * 请求登陆页面
+     * @return
+     */
+    @RequestMapping(value="loginUI")
+    public String loginUI(){
+        return "UserViews/loginUI";
+    }
 
+    /**
+     *
+     * @param session
+     * @param map
+     * @param username
+     * @param password
+     * @return
+     */
+    @RequestMapping(value = "login")
+    public String login(HttpSession session,Map<String, String> map, @RequestParam("username") String username, @RequestParam("password") String password){
+        //根据用户面密码查询用户
+        User user = userService.findUserByNameAndPass(username,password);
+        if(user != null){
+            session.setAttribute("user",user);
+            return "UserViews/index";
+        }
+        map.put("message","账号或密码错误！");
+        return "forward:/user/loginUI";
+    }
+
+    @RequestMapping(value="logout")
+    public String logout(HttpSession session){
+        session.removeAttribute("user");
+        return "redirect:/user/loginUI";
+    }
+
+
+    //按 时间段 条目 以及分页的组合进行查询 收入情况
     @RequestMapping("inspectIncomeByCondition")
     public ModelAndView inspectIncomeByCondition(HttpServletRequest request){
 

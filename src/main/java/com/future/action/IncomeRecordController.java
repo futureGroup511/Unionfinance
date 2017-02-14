@@ -5,9 +5,13 @@ import com.future.domain.Entry;
 import com.future.domain.IncomeRecord;
 import com.future.domain.Union;
 import com.future.domain.User;
+import com.future.utils.PageBean;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Date;
@@ -61,5 +65,58 @@ public class IncomeRecordController extends BaseController{
         modelAndView.addObject("entries",entries);
         modelAndView.setViewName("/IncomeRecordViews/incomerecordview");
         return  modelAndView;
+    }
+
+    /**
+     * 查询所有拨款记录
+     */
+    @RequestMapping(value="getAllIncomeRecord/{currentPage}",method = RequestMethod.GET)
+    public ModelAndView getAllIncomeRecord(@PathVariable("currentPage") Integer currentPage){
+        String viewname = "IncomeRecordViews/getAllIncomeRecord";
+        ModelAndView modelAndView = new ModelAndView(viewname);
+        PageBean pageBean = PageBean.getDefault();
+        pageBean.setCurrentPage(currentPage);
+        pageBean = incomeRecordService.getAllIncomeRecord(pageBean);
+        pageBean.calbeginAndEnd();
+        modelAndView.addObject("pageBean",pageBean);
+        Double incomeSumMonsy = incomeRecordService.getAllincomeSumMonsy();
+        modelAndView.addObject("incomeSumMonsy",incomeSumMonsy);
+        //准备数据，工会和条目
+        List<Entry> entryList = entryService.getAllExpenEntry();
+        List<Union> unionList = unionService.findAll();
+        modelAndView.addObject("entryList",entryList);
+        modelAndView.addObject("unionList",unionList);
+        return modelAndView;
+    }
+
+    /**
+     * 条件查询拨款
+     */
+    @RequestMapping(value="getConditionIncomeRecord/{currentPage}",method = RequestMethod.POST)
+    public ModelAndView getConditionIncomeRecord(@PathVariable("currentPage") Integer currentPage,
+                                                 @RequestParam(value="date1",required = false) String date1,
+                                                 @RequestParam(value="date2",required = false) String date2,
+                                                 @RequestParam(value="un_id",required = false) Integer un_id,
+                                                 @RequestParam(value="en_id",required = false) Integer en_id){
+        String viewname="IncomeRecordViews/getConditionIncomeRecord";
+        ModelAndView modelAndView = new ModelAndView(viewname);
+        PageBean pageBean = PageBean.getDefault();
+        pageBean.setCurrentPage(currentPage);
+        pageBean = incomeRecordService.getConditionIncomeRecord(pageBean,date1,date2,un_id,en_id);
+        pageBean.calbeginAndEnd();
+        modelAndView.addObject("pageBean",pageBean);
+        Double incomeSumMonsy = incomeRecordService.getConditionIncomeRecordSumMoney(date1,date2,un_id,en_id);
+        modelAndView.addObject("incomeSumMonsy",incomeSumMonsy);
+        //准备数据，工会和条目
+        List<Entry> entryList = entryService.getAllExpenEntry();
+        List<Union> unionList = unionService.findAll();
+        modelAndView.addObject("entryList",entryList);
+        modelAndView.addObject("unionList",unionList);
+        //放入原本起止日期，工会，条目
+        modelAndView.addObject("date11",date1);
+        modelAndView.addObject("date22",date2);
+        modelAndView.addObject("un_id",un_id);
+        modelAndView.addObject("en_id",en_id);
+        return modelAndView;
     }
 }

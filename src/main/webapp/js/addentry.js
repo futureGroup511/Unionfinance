@@ -1,6 +1,6 @@
 function addEntry(type) {
     var str=prompt("请输入想要添加的条目");
-
+    if(str == null) return false;
     if(str != ""){
         var data={en_name:str,en_type:type}
         $.ajax({
@@ -15,8 +15,7 @@ function addEntry(type) {
                         type:'post',
                         async:false,
                         success:function (message) {
-                            $("#entry").append("<option value='message'>"+str+"</option>")
-                            alert("添加"+str+"成功");
+                            $("#entry").append("<option value="+"'"+message+"'"+">"+str+"</option>");
                         }
                     })
                 }

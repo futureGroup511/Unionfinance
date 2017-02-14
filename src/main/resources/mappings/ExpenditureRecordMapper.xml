@@ -101,6 +101,7 @@
 	<select id="getAllExpendList" parameterType="com.future.utils.PageBean" resultMap="ExpendListMap">
 		select expend.*,un.*,user.*,uf_entry.* from uf_expenditurerecord expend JOIN uf_union un on expend.er_union_id = un.un_id
 		JOIN uf_user user on expend.er_user_id = user.user_id JOIN uf_entry on expend.er_entry_id = uf_entry.en_id
+		order by expend.er_date desc
 		limit #{0},#{1}
 	</select>
 
@@ -113,6 +114,76 @@
 	<!--* 查询支出总金额-->
 	<select id="getAllExpendSumMoney" resultType="java.lang.Double">
 		select sum(expend.er_money) from uf_expenditurerecord expend
+	</select>
+
+
+	<!--* 支出记录条件查询 where expend.er_union_id=#{4} and expend.er_entry_id=#{5}  and expend.er_date between #{2} and #{3}-->
+	<select id="getConditionExpendRecord" resultMap="ExpendListMap">
+		select expend.*,un.*,user.*,uf_entry.* from uf_expenditurerecord expend JOIN uf_union un on expend.er_union_id = un.un_id
+		JOIN uf_user user on expend.er_user_id = user.user_id JOIN uf_entry on expend.er_entry_id = uf_entry.en_id
+		<where>
+			<if test="un_id != 0">
+				expend.er_union_id=#{un_id}
+			</if>
+			<if test="en_id != 0">
+				and expend.er_entry_id=#{en_id}
+			</if>
+			<if test="date3 != ''">
+				and expend.er_date <![CDATA[>=]]> #{date3}
+			</if>
+			<if test="date4 != ''" >
+				and expend.er_date <![CDATA[<=]]> #{date4}
+			</if>
+			<if test="date3 != '' and date4 !='' ">
+				and expend.er_date between #{date3} and #{date4}
+			</if>
+		</where>
+		order by expend.er_date desc
+		limit #{a},#{b}
+	</select>
+
+	<!--* 支出记录条件查询==>计算总记录数量-->
+	<select id="getConditionExpendCount" resultType="int">
+		select count(*) from uf_expenditurerecord expend
+		<where>
+			<if test="un_id != 0">
+				expend.er_union_id=#{un_id}
+			</if>
+			<if test="en_id != 0">
+				and expend.er_entry_id=#{en_id}
+			</if>
+			<if test="date3 != ''">
+				and expend.er_date <![CDATA[>=]]> #{date3}
+			</if>
+			<if test="date4 != ''" >
+				and expend.er_date <![CDATA[<=]]> #{date4}
+			</if>
+			<if test="date3 != '' and date4 !='' ">
+				and expend.er_date between #{date3} and #{date4}
+			</if>
+		</where>
+	</select>
+
+	<!--* 支出记录条件查询==>计算总金额-->
+	<select id="getConditionExpendSumMoney" resultType="java.lang.Double">
+		select sum(expend.er_money) from uf_expenditurerecord expend
+		<where>
+			<if test="un_id != 0">
+				expend.er_union_id=#{un_id}
+			</if>
+			<if test="en_id != 0">
+				and expend.er_entry_id=#{en_id}
+			</if>
+			<if test="date3 != ''">
+				and expend.er_date <![CDATA[>=]]> #{date3}
+			</if>
+			<if test="date4 != ''" >
+				and expend.er_date <![CDATA[<=]]> #{date4}
+			</if>
+			<if test="date3 != '' and date4 !='' ">
+				and expend.er_date between #{date3} and #{date4}
+			</if>
+		</where>
 	</select>
 
 </mapper>
