@@ -1,0 +1,81 @@
+@charset "utf-8";
+/* CSS Document */
+*{
+padding:0;
+margin:0;
+}
+body{
+	font-size: 17px;
+	font-family: 微软雅黑;
+}
+.row{
+	width:100%;
+}
+body{
+	background-image:url(../images/dotted.png);
+}
+#body-one{
+  border: 1px solid #DEE0E0;
+  margin-top: 30px;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+}
+.row{
+	width:100%;
+}
+.container{
+  width:99%;
+  background-color:#FFFFFF;
+  height:60px;
+  margin-top:20px;
+}
+.container a .btn{
+	background-color: #12A1EC;
+}
+.container .row a{
+  margin-top:12px;
+  display:block;
+}
+.container .row p{
+	 margin-top:20px;
+}
+.container .row a:hover{
+  text-decoration: none;
+  color:#FFCA00;
+}
+.container-one{
+	text-align: center;
+	width: 97%;
+}
+.container-one .btn{
+	background-color: #12A1EC;
+}
+.container-one .row select{
+	margin-left: -25%;
+}
+.container-one .row input{
+	margin-left: -25%;
+	margin-top:-3%;
+}
+.container-one {
+	margin-top: 30px;
+}
+.container-one .row select{
+	margin-top: -3px;
+}
+.table-responsive{
+	width:88%;
+	margin:0 auto;
+	margin-top: 20px;
+}
+.table-responsive th,td,tr{
+	text-align: center;
+}
+.container-two .row  .xixnxi{
+	margin-left:4%;
+	margin-top:8%;
+}
+.container-two .pagination{
+	margin-left:-3%;
+}

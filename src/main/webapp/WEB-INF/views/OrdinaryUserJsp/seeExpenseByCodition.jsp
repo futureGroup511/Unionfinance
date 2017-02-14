@@ -14,6 +14,9 @@
     <link rel="stylesheet" href="<%= basePath%>css/bootstrapDatepickr-1.0.0.css">
     <link rel="stylesheet" href="<%= basePath%>css/bootstrap.min.css">
     <link rel="stylesheet" href="<%= basePath%>css/font-awesome.min.css">
+    <!-- 前端样式 -->
+    <link rel="stylesheet" href="<%= basePath%>css/bootstrap.css">
+    <link rel="stylesheet" href="<%= basePath%>css/flowdirection.css">
 
     <script src="<%= basePath%>js/jquery-1.7.2.min.js"></script>
     <script src="<%= basePath%>js/bootstrap.min.js"></script>
@@ -25,8 +28,119 @@
         });
     </script>
 </head>
+
 <body>
-<!-- currentPage=1&entryId=&startDate=&endDate= -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-1 col-lg-offset-1 col-md-2  col-xs-2 col-xs-offset-1">
+            <a><button class="btn btn-primary" type="button"><img src="<%= basePath%>images/yonghuzengjia.png" width="25" height="25">增加用户</button></a>
+        </div>
+        <div class="col-lg-3 col-lg-offset-5 col-md-5 scol-md-offset-3 col-xs-5  col-xs-offset-1">
+            <p>当前位置：首页>>公会资金流向</p>
+        </div>
+        <div class="col-lg-2 col-md-3 col-xs-3">
+            <p>欢迎登录本系统</p>
+        </div>
+    </div>
+</div>
+<div class="container-one">
+    <form action="inspectExpenseByCondition">
+        <div class="row">
+            <div class="col-lg-3 col-lg-offset-1 col-md-4 col-xs-4 three">
+                <div class="col-lg-4 col-md-6  col-xs-6">
+                    <span>开始日期：</span>
+                </div>
+                <div class="col-lg-6 col-md-6  col-xs-6">
+                    <input  id="calendarStart" name="startDate" class="form-control">
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-xs-4">
+                <div class="col-lg-5 col-md-6  col-xs-6">
+                    <span>结束日期：</span>
+                </div>
+                <div class="col-lg-6 col-md-6  col-xs-6">
+                    <input id="calendarEnd" name="endDate" class="form-control">
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3  col-xs-3">
+                <div class="col-lg-4 col-md-5  col-xs-5">
+                    <span>项目：</span>
+                </div>
+                <div class="col-lg-6 col-md-4  col-xs-4">
+                    <select name="entryId" class="form-control">
+                        <c:forEach items="${requestScope.entryList }" var="entry">
+                            <option value="${entry.en_id}">${entry.en_name}</option>
+                        </c:forEach>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-1 col-md-1  col-xs-1">
+                <%-- <input class="btn btn-primary" type="submit" name="查询"/>--%>
+                <button class="btn btn-primary" type="submit">提交</button>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="table-responsive">
+    <table class="table table-bordered table-hover table-striped">
+        <thead>
+        <tr class="two">
+            <th>拨款日期</th>
+            <th>拨款金额</th>
+            <th>拨款人</th>
+            <th>所给单位</th>
+            <th>拨款项目</th>
+        </tr>
+        </thead>
+        <tbody>
+        <c:forEach items="${requestScope.page.recordlist }" var="expenseRecord">
+            <tr>
+                <td><fmt:formatDate value="${expenseRecord.er_date}" pattern="yyyy-MM-dd"></fmt:formatDate></td>
+                <td>${expenseRecord.er_money}元</td>
+                <td>${expenseRecord.er_user.user_name}</td>
+                <td>${expenseRecord.er_union.un_name}</td>
+                <td>${expenseRecord.er_entry.en_name}</td>
+            </tr>
+        </c:forEach>
+        </tbody>
+    </table>
+</div>
+<div class="container-two">
+    <div class="row">
+        <div class="col-lg-5 col-lg-offset-5 col-md-5 col-md-offset-4 col-xs-5 col-xs-offset-4">
+            <p class="xixnxi">每页显示10条，总记录数4条</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-5 col-lg-offset-5 col-md-6 col-md-offset-4 col-xs-6 col-xs-offset-4">
+            <nav>
+                <ul class="pagination">
+                    </li>
+                    <li><a href="<%= basePath%>user/inspectExpenseByCondition?currentPage=${requestScope.page.beginPageIndex }&entryId=${requestScope.entryId}&startDate=${requestScope.startDate}&endDate=${requestScope.endDate}">首页</a></li>
+                    <c:if test="${requestScope.page.currentPage>1}">
+                        <li><a href="<%= basePath%>user/inspectExpenseByCondition?currentPage=${requestScope.page.currentPage-1 }&entryId=${requestScope.entryId}&startDate=${requestScope.startDate}&endDate=${requestScope.endDate}">上一页</a></li>
+                    </c:if>
+                    <li><a href="#">当前第${requestScope.page.currentPage}页</a></li>
+                    <c:if test="${requestScope.page.currentPage<requestScope.page.endPageIndex}">
+                        <li><a href="<%= basePath%>user/inspectExpenseByCondition?currentPage=${requestScope.page.currentPage+1 }&entryId=${requestScope.entryId}&startDate=${requestScope.startDate}&endDate=${requestScope.endDate}">下一页</a></li>
+                    </c:if>
+                    <li><a href="<%= basePath%>user/inspectExpenseByCondition?currentPage=${requestScope.page.endPageIndex }&entryId=${requestScope.entryId}&startDate=${requestScope.startDate}&endDate=${requestScope.endDate}">尾页</a></li>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+<script src="js/jquery-2.1.4.js"></script>
+<script src="js/bootstrap.js"></script>
+</body>
+</html>
+
+
+
+
+    <!--
+<body>
 <form action="inspectExpenseByCondition">
     起始日期：<input id="calendarStart" name="startDate"/>
     结束日期：<input id="calendarEnd" name="endDate"/>
@@ -56,8 +170,8 @@
             <td>${expenseRecord.er_entry.en_name}</td>
         </tr>
     </c:forEach>
-
-
+    -->
+    <!--有问题 -->
     <%--<c:if test="#request.page == null || #request.page.recordlist.size() == 0">
         <tr>
             <td colspan="5">

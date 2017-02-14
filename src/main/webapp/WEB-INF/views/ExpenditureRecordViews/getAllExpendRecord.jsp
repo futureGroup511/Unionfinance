@@ -7,7 +7,6 @@
 </head>
 <body>
 
-
 <form action="${pageContext.request.contextPath}/expenditurerecord/getConditionExpendRecord/1" method="post">
     起止日期：<input type="date" name="date1">~<input type="date" name="date2">
     单位：<select name="un_id" >
