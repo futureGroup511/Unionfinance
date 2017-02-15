@@ -15,11 +15,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
 /**
  * Created by 牛洧鹏 on 2017/1/15.
+ * 刘阳
+ * 添加支出记录，
+ * 查看所有支出，
  */
 @Controller
 @Scope("prototype")
@@ -27,64 +31,46 @@ import java.util.List;
 public class ExpenditureRecordController extends BaseController {
 
     /**
-     *  请求支出页面。
+     * 请求支出页面
      */
     @RequestMapping(value="addExpendUI",method = RequestMethod.GET)
     public ModelAndView addExpendUI(){
         String viewname = "ExpenditureRecordViews/addExpendUI";
         ModelAndView modelAndView = new ModelAndView(viewname);
-        //准备数据，工会和条目
-        List<Entry> entryList = entryService.getAllExpenEntry();
-        List<Union> unionList = unionService.findAll();
-        modelAndView.addObject("entryList",entryList);
-        modelAndView.addObject("unionList",unionList);
-        modelAndView.addObject("expendRecord",new ExpenditureRecord());
+        preparationData(modelAndView);
         return modelAndView;
     }
 
     /**
      *  处理支出请求。
+     *  inmoney 收入   exmoney支出
+     *  union，根据id得到工会的信息
+     *  单位，条目，金额，保障人、备注，新增时间和支出人line58，59
      */
     @RequestMapping(value="addExpend",method = RequestMethod.POST)
     public ModelAndView addExpend(ExpenditureRecord expendRecord, HttpSession httpSession){
         String viewname = "ExpenditureRecordViews/addExpendUI";
         ModelAndView modelAndView = new ModelAndView(viewname);
-        //单位，条目，金额，保障人、备注  新增时间和支出人
         expendRecord.setEr_date(new Date());
-        System.out.println("查看session中user"  + (User)httpSession.getAttribute("user"));
         expendRecord.setEr_user((User)httpSession.getAttribute("user"));
-
-        //根据id查询工会信息
         Union union = unionService.findById(expendRecord.getEr_union().getUn_id());
-        //inmoney 收入   exmoney支出
         Double inmoney = incomeRecordService.sumMoney(expendRecord.getEr_union().getUn_id());
         Double exmoney = eRecordService.sumExMoney(expendRecord.getEr_union().getUn_id());
+        Double balance = inmoney-exmoney;
         if (exmoney == null) exmoney = 0.00;
         try {
-            if((inmoney-exmoney) < 0){
+            if(balance < 0){
                 modelAndView.addObject("message","余额不足，支出失败");
             } else {
                 eRecordService.insert(expendRecord);
-                modelAndView.addObject("message",union.getUn_name()+"支出"+expendRecord.getEr_money()+"元成功,还剩余"+(inmoney-exmoney-expendRecord.getEr_money()));
+                SimpleDateFormat sf = new SimpleDateFormat("yyyy年MM月dd日");
+                String date = sf.format(new Date());
+                modelAndView.addObject("message",union.getUn_name() + date +"支出"+expendRecord.getEr_money()+"元成功,还剩余"+(inmoney-exmoney-expendRecord.getEr_money()));
             }
         }catch (Exception e){
             modelAndView.addObject("message","报账失败");
         }
-
-
-        //eRecordService.insert(expendRecord);
-        //支出之后要显示本次支出金额，和总金额
-        //xx工会 xx日期  支出 xx元，现于额
-        //Union union = unionService.findById(expendRecord.getEr_union().getUn_id());
-        //Date date = new Date();
-        //String money = String.valueOf(expendRecord.getEr_money());
-        //先算收入，在算支出，最后相减
-        Double sumMoney = null;
-        //准备数据，工会和条目
-        List<Entry> entryList = entryService.getAllExpenEntry();
-        List<Union> unionList = unionService.findAll();
-        modelAndView.addObject("entryList",entryList);
-        modelAndView.addObject("unionList",unionList);
+        preparationData(modelAndView);
         return modelAndView;
     }
 
@@ -103,12 +89,7 @@ public class ExpenditureRecordController extends BaseController {
         modelAndView.addObject("pageBean",pageBean);
         Double expendSumMonsy = eRecordService.getAllExpendSumMoney();
         modelAndView.addObject("expendSumMonsy",expendSumMonsy);
-        //准备数据，工会和条目
-        List<Entry> entryList = entryService.getAllExpenEntry();
-        List<Union> unionList = unionService.findAll();
-        modelAndView.addObject("entryList",entryList);
-        modelAndView.addObject("unionList",unionList);
-
+        preparationData(modelAndView);
         return modelAndView;
     }
 
@@ -138,18 +119,22 @@ public class ExpenditureRecordController extends BaseController {
         modelAndView.addObject("pageBean",pageBean);
         Double expendSumMonsy = eRecordService.getConditionExpendSumMoney(date1,date2,un_id,en_id);
         modelAndView.addObject("expendSumMonsy",expendSumMonsy);
-        //准备数据，工会和条目
-        List<Entry> entryList = entryService.getAllExpenEntry();
-        List<Union> unionList = unionService.findAll();
-        modelAndView.addObject("entryList",entryList);
-        modelAndView.addObject("unionList",unionList);
+        preparationData(modelAndView);
         //放入原本起止日期，工会，条目
         modelAndView.addObject("date11",date1);
         modelAndView.addObject("date22",date2);
         modelAndView.addObject("un_id",un_id);
         modelAndView.addObject("en_id",en_id);
         return modelAndView;
-
     }
 
+    /**
+     * 准备数据
+     */
+    public void preparationData(ModelAndView modelAndView){
+        List<Entry> entryList = entryService.getAllExpenEntry();
+        List<Union> unionList = unionService.findAll();
+        modelAndView.addObject("entryList",entryList);
+        modelAndView.addObject("unionList",unionList);
+    }
 }

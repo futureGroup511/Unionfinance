@@ -50,9 +50,7 @@ public class ExpenditureRecordServiceImp  implements ExpenditureRecordService{
 	 * @return
 	 */
 	public PageBean getAllExpendRecord(PageBean pageBean) {
-		//1���ܼ�¼
 		List<ExpenditureRecord> expendList = eDao.getAllExpendList(((pageBean.getCurrentPage()-1)*pageBean.getPageSize()),pageBean.getPageSize());
-		//2.�ܼ�¼����
 		int count = eDao.getAllExpendListNum();
 		pageBean.setRecordlist(expendList);
 		pageBean.setRecordCount(count);
