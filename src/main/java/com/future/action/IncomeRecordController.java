@@ -8,12 +8,10 @@ import com.future.domain.User;
 import com.future.utils.PageBean;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
 import java.util.Date;
 import java.util.List;
 
@@ -23,6 +21,7 @@ import java.util.List;
 @Controller
 @Scope("prototype")
 @RequestMapping("incomerecord")
+@SessionAttributes("user")
 public class IncomeRecordController extends BaseController{
 
     /**
@@ -30,10 +29,9 @@ public class IncomeRecordController extends BaseController{
      * @return
      */
     @RequestMapping(value = "/incomerecordview")
-    public ModelAndView incomerecordview(){
+    public ModelAndView incomerecordview(HttpSession session){
         /*模拟User*/
-        User user = User.getDefaultUser();
-        user.setUser_id(3);
+        User user = (User) session.getAttribute("user");
         ModelAndView modelAndView = new ModelAndView();
         List<Union> unions = unionService.findAll(); //得到所有工会
         List<Entry> entries = entryService.findAll(); // 得到所有条目
@@ -45,16 +43,18 @@ public class IncomeRecordController extends BaseController{
     }
 
     @RequestMapping("/add")
-    public ModelAndView add(IncomeRecord incomeRecord){
-        User user = User.getDefaultUser();
-        user.setUser_id(3);
+    public ModelAndView add(IncomeRecord incomeRecord,HttpSession session){
+        User user = (User) session.getAttribute("user");
         incomeRecord.setIr_date(new Date());
         incomeRecord.setIr_user(user);
         ModelAndView modelAndView = new ModelAndView();
         Union union = unionService.findById(incomeRecord.getIr_union().getUn_id());
+        Double inmoney = incomeRecordService.sumMoney(incomeRecord.getIr_union().getUn_id());
+        Double exmoney = eRecordService.sumExMoney(incomeRecord.getIr_union().getUn_id());
+        if (exmoney == null) exmoney = 0.00;
         try {
             incomeRecordService.add(incomeRecord);
-            modelAndView.addObject("message",union.getUn_name()+"拨款"+incomeRecord.getIr_money()+"元成功");
+            modelAndView.addObject("message",union.getUn_name()+"拨款"+incomeRecord.getIr_money()+"元成功,还剩余"+(inmoney-exmoney));
         }catch (Exception e){
             modelAndView.addObject("message","拨款失败");
         }

@@ -88,4 +88,8 @@ public class IncomeRecordServiceImp implements IncomeRecordService {
 	public int countAllIncome(Integer unionId) {
 		return incomeRecordDao.countAllIncome(unionId);
 	}
+
+	public Double sumMoney(Integer id) {
+		return incomeRecordDao.sumMoney(id);
+	}
 }

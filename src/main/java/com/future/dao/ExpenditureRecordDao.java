@@ -16,7 +16,7 @@ public interface ExpenditureRecordDao {
 
     int countAllExpense(Integer unionId);
     /**
-     * ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Â?
+     * ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½ï¿½?
      * @param expendRecord
      */
     void insert(ExpenditureRecord expendRecord);
@@ -34,13 +34,13 @@ public interface ExpenditureRecordDao {
     int getAllExpendListNum();
 
     /**
-     * ï¿½ï¿½Ñ¯Ö§ï¿½ï¿½ï¿½Ü½ï¿½ï¿?
+     * ï¿½ï¿½Ñ¯Ö§ï¿½ï¿½ï¿½Ü½ï¿½ï¿½?
      * @return
      */
     Double getAllExpendSumMoney();
 
     /**
-     * Ö§³ö¼ÇÂ¼Ìõ¼þ²éÑ¯
+     * Ö§ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯
      * @param
      * @param date3
      * @param date4
@@ -52,7 +52,7 @@ public interface ExpenditureRecordDao {
     List<ExpenditureRecord> getConditionExpendRecord(@Param("a") int a, @Param("b") Integer b, @Param("date3") String date3, @Param("date4") String date4, @Param("un_id") int un_id, @Param("en_id") int en_id);
 
     /**
-     * Ö§³ö¼ÇÂ¼Ìõ¼þ²éÑ¯==>¼ÆËã×Ü¼ÇÂ¼ÊýÁ¿
+     * Ö§ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯==>ï¿½ï¿½ï¿½ï¿½ï¿½Ü¼ï¿½Â¼ï¿½ï¿½ï¿½ï¿½
      * @param date3
      * @param date4
      * @param un_id
@@ -62,9 +62,11 @@ public interface ExpenditureRecordDao {
     int getConditionExpendCount(@Param("date3") String date3, @Param("date4") String date4, @Param("un_id") int un_id, @Param("en_id") int en_id);
 
     /**
-     * * Ö§³ö¼ÇÂ¼Ìõ¼þ²éÑ¯==>¼ÆËã×Ü½ð¶î
-     * Ìõ¼þ²éÑ¯Ö§³ö½ð¶î
+     * * Ö§ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯==>ï¿½ï¿½ï¿½ï¿½ï¿½Ü½ï¿½ï¿½
+     * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯Ö§ï¿½ï¿½ï¿½ï¿½ï¿½
      * @return
      */
     Double getConditionExpendSumMoney(@Param("date3") String date3, @Param("date4") String date4, @Param("un_id") int un_id, @Param("en_id") int en_id);
+
+    Double sumExMoney(Integer id);
 }

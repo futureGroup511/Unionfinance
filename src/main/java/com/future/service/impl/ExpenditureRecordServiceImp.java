@@ -70,7 +70,7 @@ public class ExpenditureRecordServiceImp  implements ExpenditureRecordService{
 	}
 
 	/**
-	 * Ö§³ö¼ÇÂ¼Ìõ¼þ²éÑ¯
+	 * Ö§ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯
 	 * @param pageBean
 	 * @param date3
 	 * @param date4
@@ -87,10 +87,14 @@ public class ExpenditureRecordServiceImp  implements ExpenditureRecordService{
 	}
 
 	/**
-	 * Ìõ¼þ²éÑ¯Ö§³ö½ð¶î
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯Ö§ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * @return
 	 */
 	public Double getConditionExpendSumMoney(String date1, String date2, Integer un_id, Integer en_id) {
 		return eDao.getConditionExpendSumMoney(date1,date2,un_id,en_id);
+	}
+
+	public Double sumExMoney(Integer id) {
+		return eDao.sumExMoney(id);
 	}
 }

@@ -10,31 +10,54 @@
 <html>
 <head>
     <title>查看所有用户</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/table-five.css">
 </head>
 <body>
-    <table>
-        <tr>
-            <th>序号</th>
-            <th>姓名</th>
-            <th>电话号码</th>
-            <th>所属工会</th>
-            <th>类型</th>
-            <th>删除</th>
-            <th>修改</th>
-        </tr>
-        <c:forEach items="${users}" var="user" varStatus="status">
-            <tr>
-                <th>${status.index+1}</th>
-                <th>${user.user_name}</th>
-                <th>${user.user_phonenumber}</th>
-                <th>${user.user_union.un_name}</th>
-                <th>${user.user_type eq 0? '拨款管理员':user.user_type eq 1? '支出管理员':'普通用户'}</th>
-                <th><a href="/Unionfinance/user/delete/?id=${user.user_id}">删除</a></th>
-                <th><a href="/Unionfinance/user/update/?id=${user.user_id}">修改</a></th>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3 col-lg-offset-5 col-md-5 scol-md-offset-3 col-xs-5  col-xs-offset-1">
+            <p>当前位置：首页>>查看所有用户</p>
+        </div>
+        <div class="col-lg-2 col-md-3 col-xs-3">
+            <p>欢迎登录本系统</p>
+        </div>
+    </div>
+</div>
+<div id="body-one">
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover table-striped">
+            <tr class="two">
+                <th>序号</th>
+                <th>姓名</th>
+                <th>电话号码</th>
+                <th>所属工会</th>
+                <th>类型</th>
+                <th>编辑</th>
+
             </tr>
-        </c:forEach>
-    </table>
-    <a href="/Unionfinance/user/add">添加</a>
+            <c:forEach items="${users}" var="user" varStatus="status">
+                <tr>
+                    <td>${status.index+1}</td>
+                    <td>${user.user_name}</td>
+                    <td>${user.user_phonenumber}</td>
+                    <td>${user.user_union.un_name}</td>
+                    <td>${user.user_type eq 0? '拨款管理员':user.user_type eq 1? '支出管理员':'普通用户'}</td>
+
+                    <td class="four">
+                        <img src="${pageContext.request.contextPath}/images/bian.png">
+                        <a href="/Unionfinance/user/update/?id=${user.user_id}">修改</a>
+                        &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;<img src="${pageContext.request.contextPath}/images/lajitong.png">
+                        <a href="/Unionfinance/user/delete/?id=${user.user_id}">删除</a>
+                    </td>
+                </tr>
+            </c:forEach>
+        </table>
+    </div>
+</div>
+<div class="container-three">
+    <a href="/Unionfinance/user/add" class="btn btn-primary">添加</a>
+</div>
     <p>${message}</p>
 </body>
 </html>

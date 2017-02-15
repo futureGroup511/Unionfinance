@@ -73,5 +73,10 @@ public interface IncomeRecordDao {
     Double getConditionIncomeRecordSumMoney(@Param("date3") String date3, @Param("date4") String date4, @Param("un_id") int un_id, @Param("en_id") int en_id);
 
     int countAllIncome(Integer unionId);
-
+    /**
+     * 公会所有拨款的总和
+     * @param id
+     * @return
+     */
+    Double sumMoney(Integer id);
 }

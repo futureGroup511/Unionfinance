@@ -186,4 +186,8 @@
 		</where>
 	</select>
 
+	<select id="sumExMoney" parameterType="int" resultType="double">
+		SELECT SUM(er_money) FROM uf_expenditurerecord WHERE er_union_id =#{id}
+	</select>
+
 </mapper>

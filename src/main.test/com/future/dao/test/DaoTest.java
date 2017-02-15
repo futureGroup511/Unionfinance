@@ -2,12 +2,8 @@ package com.future.dao.test;
 
 import com.future.domain.Entry;
 import com.future.domain.IncomeRecord;
-import com.future.domain.Union;
 import com.future.domain.User;
-import com.future.service.EntryService;
-import com.future.service.IncomeRecordService;
-import com.future.service.UnionService;
-import com.future.service.UserService;
+import com.future.service.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +28,8 @@ public class DaoTest {
 	@Autowired
 	private EntryService entryService;
 
+	@Autowired
+	private ExpenditureRecordService erService;
 
 	@Test
 	public void testfinduser(){
@@ -110,10 +108,11 @@ public class DaoTest {
 
 	@Test
 	public void testUser(){
-		Union union = new Union();
+		System.out.println(erService.sumExMoney(2));
+		/*Union union = new Union();
 		union.setUn_id(1);
 		User user = User.getDefaultUser();
-		userService.add(user);
+		userService.add(user);*/
 		/*
 
 
@@ -131,4 +130,6 @@ public class DaoTest {
 		userService.deleteById(2);
 		*/
 	}
+
+
 }
