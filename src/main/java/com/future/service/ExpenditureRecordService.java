@@ -7,8 +7,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * ֧����¼
- * @author ţ���?
+ * 支出记录
+ * @author 牛洧鹏
  *
  */
 public interface ExpenditureRecordService {
@@ -20,25 +20,27 @@ public interface ExpenditureRecordService {
     int countAllExpense(Integer unionId);
 
     /**
-     * ���֧�����?
+     * 添加支出记录
      * @param expendRecord
      */
     void insert(ExpenditureRecord expendRecord);
 
     /**
-     * ��ҳ��ѯ����֧����¼
+     * 分页查询所有支出记录
      * @param pageBean
      * @return
      */
     PageBean getAllExpendRecord(PageBean pageBean);
 
+
     /**
-     * ��ѯ����֧���
+     * 查询所有支金额
+     * @return
      */
     Double getAllExpendSumMoney();
 
     /**
-     * ֧����¼������ѯ
+     * 支出记录条件查询
      * @param pageBean
      * @param date3
      * @param date4
@@ -49,7 +51,7 @@ public interface ExpenditureRecordService {
     PageBean getConditionExpendRecord(PageBean pageBean, String date3, String date4, Integer un_id, Integer en_id);
 
     /**
-     * ������ѯ֧�����
+     * 条件查询支出金额
      * @return
      */
     Double getConditionExpendSumMoney(String date1,String date2,Integer un_id, Integer en_id);
