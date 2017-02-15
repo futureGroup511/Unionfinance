@@ -28,4 +28,10 @@ public interface EntryDao {
      * @return
      */
     List<Entry> getAllExpenEntry();
+
+    /**
+     * 查询所有收入条目，类型为0
+     * @return
+     */
+    List<Entry> getAllIncomeEntry();
 }

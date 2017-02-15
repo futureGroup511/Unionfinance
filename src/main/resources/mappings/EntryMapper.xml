@@ -39,4 +39,9 @@
 		select * from uf_entry where uf_entry.en_type = 1;
 	</select>
 
+	<!--查询所有收入条目，类型为0-->
+	<select id="getAllIncomeEntry" resultMap="BaseResultMap">
+		select * from uf_entry where uf_entry.en_type = 0;
+	</select>
+
 </mapper>
