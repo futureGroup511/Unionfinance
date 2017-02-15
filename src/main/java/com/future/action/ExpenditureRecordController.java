@@ -46,16 +46,33 @@ public class ExpenditureRecordController extends BaseController {
      *  处理支出请求。
      */
     @RequestMapping(value="addExpend",method = RequestMethod.POST)
-    public void addExpend(ExpenditureRecord expendRecord, HttpSession httpSession){
+    public ModelAndView addExpend(ExpenditureRecord expendRecord, HttpSession httpSession){
+        String viewname = "ExpenditureRecordViews/addExpendUI";
+        ModelAndView modelAndView = new ModelAndView(viewname);
         //单位，条目，金额，保障人、备注  新增时间和支出人
         expendRecord.setEr_date(new Date());
-        User user = new User();
-        //======将来要删除
-        //user.setUser_id(1);
-        //httpSession.setAttribute("user",user);
-        //======
+        System.out.println("查看session中user"  + (User)httpSession.getAttribute("user"));
         expendRecord.setEr_user((User)httpSession.getAttribute("user"));
-        eRecordService.insert(expendRecord);
+
+        //根据id查询工会信息
+        Union union = unionService.findById(expendRecord.getEr_union().getUn_id());
+        //inmoney 收入   exmoney支出
+        Double inmoney = incomeRecordService.sumMoney(expendRecord.getEr_union().getUn_id());
+        Double exmoney = eRecordService.sumExMoney(expendRecord.getEr_union().getUn_id());
+        if (exmoney == null) exmoney = 0.00;
+        try {
+            if((inmoney-exmoney) < 0){
+                modelAndView.addObject("message","余额不足，支出失败");
+            } else {
+                eRecordService.insert(expendRecord);
+                modelAndView.addObject("message",union.getUn_name()+"支出"+expendRecord.getEr_money()+"元成功,还剩余"+(inmoney-exmoney-expendRecord.getEr_money()));
+            }
+        }catch (Exception e){
+            modelAndView.addObject("message","报账失败");
+        }
+
+
+        //eRecordService.insert(expendRecord);
         //支出之后要显示本次支出金额，和总金额
         //xx工会 xx日期  支出 xx元，现于额
         //Union union = unionService.findById(expendRecord.getEr_union().getUn_id());
@@ -63,6 +80,12 @@ public class ExpenditureRecordController extends BaseController {
         //String money = String.valueOf(expendRecord.getEr_money());
         //先算收入，在算支出，最后相减
         Double sumMoney = null;
+        //准备数据，工会和条目
+        List<Entry> entryList = entryService.getAllExpenEntry();
+        List<Union> unionList = unionService.findAll();
+        modelAndView.addObject("entryList",entryList);
+        modelAndView.addObject("unionList",unionList);
+        return modelAndView;
     }
 
     /**
