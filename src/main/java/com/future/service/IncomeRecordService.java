@@ -55,4 +55,11 @@ public interface IncomeRecordService {
 
     int countAllIncome(Integer unionId);
 
+    /**
+     * 公会所有拨款的总和
+     * @param id
+     * @return
+     */
+    Double sumMoney(Integer id);
+
 }

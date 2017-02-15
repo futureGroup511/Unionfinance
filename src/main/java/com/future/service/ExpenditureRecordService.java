@@ -8,7 +8,7 @@ import java.util.Map;
 
 /**
  * Ö§ï¿½ï¿½ï¿½ï¿½Â¼
- * @author Å£ï¿½ï¿½ï¿?
+ * @author Å£ï¿½ï¿½ï¿½?
  *
  */
 public interface ExpenditureRecordService {
@@ -20,7 +20,7 @@ public interface ExpenditureRecordService {
     int countAllExpense(Integer unionId);
 
     /**
-     * ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½Â?
+     * ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½ï¿½?
      * @param expendRecord
      */
     void insert(ExpenditureRecord expendRecord);
@@ -33,12 +33,12 @@ public interface ExpenditureRecordService {
     PageBean getAllExpendRecord(PageBean pageBean);
 
     /**
-     * ²éÑ¯ËùÓÐÖ§½ð¶î
+     * ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½
      */
     Double getAllExpendSumMoney();
 
     /**
-     * Ö§³ö¼ÇÂ¼Ìõ¼þ²éÑ¯
+     * Ö§ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯
      * @param pageBean
      * @param date3
      * @param date4
@@ -49,9 +49,10 @@ public interface ExpenditureRecordService {
     PageBean getConditionExpendRecord(PageBean pageBean, String date3, String date4, Integer un_id, Integer en_id);
 
     /**
-     * Ìõ¼þ²éÑ¯Ö§³ö½ð¶î
+     * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯Ö§ï¿½ï¿½ï¿½ï¿½ï¿½
      * @return
      */
     Double getConditionExpendSumMoney(String date1,String date2,Integer un_id, Integer en_id);
 
+    Double sumExMoney(Integer id);
 }
