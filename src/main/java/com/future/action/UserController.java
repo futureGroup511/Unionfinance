@@ -226,7 +226,7 @@ public class UserController extends BaseController{
         List<Union> unions = unionService.findAll(); //得到所有工会
         modelAndView.addObject("unions",unions);
         if(ue.getUser_id() != null){
-           userService.update(ue);
+            userService.update(ue);
             modelAndView.addObject("user",ue);
             modelAndView.addObject("message","修改成功");
         }else{

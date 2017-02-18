@@ -25,7 +25,7 @@
 
     </div>
 </div>
-<form action="/Unionfinance/union/findByType">
+<form action="/Unionfinance/entry/findByType" method="post">
 <div class="body-one">
     <div class="container-one">
         <div class="row">

@@ -23,7 +23,7 @@
 	</update>
 
 	<select id="findAll" resultType="Entry">
-		SELECT * FROM uf_entry
+		SELECT * FROM uf_entry where uf_entry.en_type = 0;
 	</select>
 
 	<select id="findById" parameterType="int" resultType="Entry">

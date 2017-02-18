@@ -49,11 +49,11 @@ public class IncomeRecordController extends BaseController{
         incomeRecord.setIr_user(user);
         ModelAndView modelAndView = new ModelAndView();
         Union union = unionService.findById(incomeRecord.getIr_union().getUn_id());
-        Double inmoney = incomeRecordService.sumMoney(incomeRecord.getIr_union().getUn_id());
-        Double exmoney = eRecordService.sumExMoney(incomeRecord.getIr_union().getUn_id());
-        if (exmoney == null) exmoney = 0.00;
         try {
             incomeRecordService.add(incomeRecord);
+            Double inmoney = incomeRecordService.sumMoney(incomeRecord.getIr_union().getUn_id());
+            Double exmoney = eRecordService.sumExMoney(incomeRecord.getIr_union().getUn_id());
+            if (exmoney == null) exmoney = 0.00;
             modelAndView.addObject("message",union.getUn_name()+"拨款"+incomeRecord.getIr_money()+"元成功,还剩余"+(inmoney-exmoney));
         }catch (Exception e){
             modelAndView.addObject("message","拨款失败");

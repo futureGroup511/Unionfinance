@@ -20,12 +20,10 @@
     <script src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
 </head>
 <body>
-<form action="/Unionfinance/incomerecord/add" method="post">
+<form action="/Unionfinance/incomerecord/add" method="post" id="form">
 <div class="container">
     <div class="row">
-        <div class="col-lg-1 col-lg-offset-1 col-md-2  col-xs-2 col-xs-offset-1">
-            <a> <button class="btn btn-primary" type="button"><img src="${pageContext.request.contextPath}/images/yonghuzengjia.png" width="25" height="25">增加用户</button></a>
-        </div>
+
         <div class="col-lg-3 col-lg-offset-5 col-md-5 scol-md-offset-3 col-xs-5  col-xs-offset-1">
             <p>当前位置：首页>>拨款</p>
         </div>
@@ -62,7 +60,7 @@
                 </div>
             </div>
             <div class="col-lg-2 col-lg-pull-1 col-md-2 col-md-pull-1 col-xs-3 col-xs-pull-1">
-                <p><a href="#" onclick="addEntry(0)">如果没有此条目，请点击添加</a></p>
+                <strong><p><a href="#" onclick="addEntry(0)" style="color: red">如果没有此条目，请点击添加</a></p></strong>
             </div>
         </div>
         <div class="row">
@@ -71,7 +69,7 @@
                     <span>金额：</span>
                 </div>
                 <div class="col-lg-6 col-md-6  col-xs-6">
-                    <input type="text" class="form-control" name="ir_money">
+                    <input type="text" class="form-control" name="ir_money" >
                 </div>
             </div>
             <div class="col-lg-3 col-md-3  col-xs-3">
@@ -83,7 +81,7 @@
                 </div>
             </div>
             <div class="col-lg-1 col-md-1 col-xs-1" style="margin-left:-2%;">
-                <button class="btn btn-primary" type="submit">确&nbsp;&nbsp;定</button>
+                <button class="btn btn-primary" type="button" onclick="jugesubmit();">确&nbsp;&nbsp;定</button>
             </div>
 
 
@@ -100,4 +98,10 @@
     </form>
 <p id="message">${message}</p>
 </body>
+<script>
+    function jugesubmit() {
+        if($("input[name='ir_money']").val() === "") $("#message").text("所填金额不能为空");
+        else $("#form").submit();
+    }
+</script>
 </html>

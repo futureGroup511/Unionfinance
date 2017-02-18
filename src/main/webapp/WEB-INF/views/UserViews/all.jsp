@@ -16,6 +16,9 @@
 <body>
 <div class="container">
     <div class="row">
+        <div class="col-lg-1 col-lg-offset-1 col-md-2  col-xs-2 col-xs-offset-1">
+            <a href="/Unionfinance/user/add" class="btn btn-primary">增加用户<img src="${pageContext.request.contextPath}/images/yonghuzengjia.png" width="25" height="25"></a>
+        </div>
         <div class="col-lg-3 col-lg-offset-5 col-md-5 scol-md-offset-3 col-xs-5  col-xs-offset-1">
             <p>当前位置：首页>>查看所有用户</p>
         </div>
@@ -56,7 +59,7 @@
     </div>
 </div>
 <div class="container-three">
-    <a href="/Unionfinance/user/add" class="btn btn-primary">添加</a>
+
 </div>
     <p>${message}</p>
 </body>
