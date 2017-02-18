@@ -127,7 +127,7 @@
         </table>
     </div>
     <div class="container-four">
-        <p>支出总金额：${incomeSumMonsy}元</p>
+        <p>收入总金额：${incomeSumMonsy}元</p>
     </div>
 
 

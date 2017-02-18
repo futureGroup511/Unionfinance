@@ -9,12 +9,13 @@
 %>
 <html>
 <head>
-    <title>查看拨款记录</title>
+    <title>条件查看拨款记录</title>
     <link rel="stylesheet" href="<%= basePath%>css/bootstrap.css">
     <link rel="stylesheet" href="<%= basePath%>css/list-two.css">
-    <script src="${pageContext.request.contextPath}/js/jquery-2.1.4.js"></script>
+
+   <%-- <script src="${pageContext.request.contextPath}/js/jquery-2.1.4.js"></script>--%>
     <link rel="stylesheet" href="<%= basePath%>css/bootstrapDatepickr-1.0.0.css">
-    <link rel="stylesheet" href="<%= basePath%>css/bootstrap.min.css">
+    <%--<link rel="stylesheet" href="<%= basePath%>css/bootstrap.min.css">--%>
     <link rel="stylesheet" href="<%= basePath%>css/font-awesome.min.css">
 
     <script src="<%= basePath%>js/jquery-1.7.2.min.js"></script>
@@ -29,18 +30,19 @@
 </head>
 
 <body>
+
 <div class="container">
     <div class="row">
-    <div class="col-lg-1 col-lg-offset-1 col-md-2  col-xs-2 col-xs-offset-1">
-        <%--<a> <button class="btn btn-primary" type="button"><img src="images/yonghuzengjia.png" width="25" height="25">增加用户</button></a>--%>
+        <div class="col-lg-1 col-lg-offset-1 col-md-2  col-xs-2 col-xs-offset-1">
+            <%--<a> <button class="btn btn-primary" type="button"><img src="images/yonghuzengjia.png" width="25" height="25">增加用户</button></a>--%>
+        </div>
+        <div class="col-lg-3 col-lg-offset-5 col-md-5 scol-md-offset-3 col-xs-5  col-xs-offset-1">
+            <p>当前位置：二级管理员>>查看拨款金额</p>
+        </div>
+        <div class="col-lg-2 col-md-3 col-xs-3">
+            <p>欢迎 ${user.user_name} 登录本系统</p>
+        </div>
     </div>
-    <div class="col-lg-3 col-lg-offset-5 col-md-5 scol-md-offset-3 col-xs-5  col-xs-offset-1">
-        <p>当前位置：二级管理员>>查看拨款金额</p>
-    </div>
-    <div class="col-lg-2 col-md-3 col-xs-3">
-        <p>欢迎 ${user.user_name} 登录本系统</p>
-    </div>
-</div>
 </div>
 <div id="body-one">
     <form id="form" action="${pageContext.request.contextPath}/incomerecord/getConditionIncomeRecord/1" method="post">
@@ -128,7 +130,7 @@
         </table>
     </div>
     <div class="container-four">
-        <p>支出总金额：${incomeSumMonsy}元</p>
+        <p>收入总金额：${incomeSumMonsy}元</p>
     </div>
 
 
