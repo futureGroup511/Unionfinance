@@ -13,8 +13,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * ֧����¼
- * @author ţ���
+ * 支出记录
+ * @author 牛洧鹏
  *
  */
 @Service
@@ -37,7 +37,7 @@ public class ExpenditureRecordServiceImp  implements ExpenditureRecordService{
     }
 
 	/**
-	 * ���֧����¼
+	 * 添加支出记录
 	 * @param expendRecord
 	 */
 	public void insert(ExpenditureRecord expendRecord) {
@@ -45,14 +45,12 @@ public class ExpenditureRecordServiceImp  implements ExpenditureRecordService{
 	}
 
 	/**
-	 * ��ҳ��ѯ֧����¼
+	 * 分页查询所有支出记录
 	 * @param pageBean
 	 * @return
 	 */
 	public PageBean getAllExpendRecord(PageBean pageBean) {
-		//1���ܼ�¼
 		List<ExpenditureRecord> expendList = eDao.getAllExpendList(((pageBean.getCurrentPage()-1)*pageBean.getPageSize()),pageBean.getPageSize());
-		//2.�ܼ�¼����
 		int count = eDao.getAllExpendListNum();
 		pageBean.setRecordlist(expendList);
 		pageBean.setRecordCount(count);
@@ -62,7 +60,7 @@ public class ExpenditureRecordServiceImp  implements ExpenditureRecordService{
 	}
 
 	/**
-	 * ��ѯ�ܽ��
+	 * 查询所有支金额
 	 * @return
 	 */
 	public Double getAllExpendSumMoney() {
@@ -70,7 +68,7 @@ public class ExpenditureRecordServiceImp  implements ExpenditureRecordService{
 	}
 
 	/**
-	 * ֧����¼������ѯ
+	 * 支出记录条件查询
 	 * @param pageBean
 	 * @param date3
 	 * @param date4
@@ -87,7 +85,7 @@ public class ExpenditureRecordServiceImp  implements ExpenditureRecordService{
 	}
 
 	/**
-	 * ������ѯ֧�����
+	 * 条件查询支出金额
 	 * @return
 	 */
 	public Double getConditionExpendSumMoney(String date1, String date2, Integer un_id, Integer en_id) {

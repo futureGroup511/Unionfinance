@@ -81,8 +81,8 @@ public class IncomeRecordController extends BaseController{
         modelAndView.addObject("pageBean",pageBean);
         Double incomeSumMonsy = incomeRecordService.getAllincomeSumMonsy();
         modelAndView.addObject("incomeSumMonsy",incomeSumMonsy);
-        //准备数据，工会和条目
-        List<Entry> entryList = entryService.getAllExpenEntry();
+        //准备数据，工会和条目   拨款条目
+        List<Entry> entryList = entryService.getAllIncomeEntry();
         List<Union> unionList = unionService.findAll();
         modelAndView.addObject("entryList",entryList);
         modelAndView.addObject("unionList",unionList);

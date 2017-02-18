@@ -28,4 +28,9 @@ public interface EntryService {
      * @return
      */
     List<Entry> getAllExpenEntry();
+
+    /**
+     * 查询所有拨款条目，类型为0
+     */
+    List<Entry> getAllIncomeEntry();
 }

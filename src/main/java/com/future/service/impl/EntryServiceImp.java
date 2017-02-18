@@ -54,4 +54,12 @@ public class EntryServiceImp implements EntryService {
 	public List<Entry> getAllExpenEntry() {
 		return entryDao.getAllExpenEntry();
 	}
+
+	/**
+	 *  查询所有拨款条目，类型为0
+	 *
+	 */
+	public List<Entry> getAllIncomeEntry() {
+		return entryDao.getAllIncomeEntry();
+	}
 }
