@@ -47,7 +47,16 @@ border: 1px solid #DEE0E0;
 .container-one .btn{
 	background-color: #12A1EC;
 	margin-top:-5px;
-	margin-left:-100%;
+	margin-left:14%;
+
+}
+.container-one .row .col-lg-2 p a{
+	font-size:12px;
+	color:grey;
+	margin-left:-5%;
+}
+.container-one .row .col-lg-2 p a:hover{
+	color:red;
 }
 .container-one .row select{
 	margin-left: -42%;

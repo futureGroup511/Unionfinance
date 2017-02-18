@@ -44,6 +44,14 @@ border: 1px solid #DEE0E0;
   text-decoration: none;
   color:#FFCA00;
 }
+.container-one .row .col-lg-2 p a{
+	font-size:12px;
+	color:grey;
+	margin-left:-5%;
+}
+.container-one .row .col-lg-2 p a:hover{
+	color:red;
+}
 .container-one .btn{
 	background-color: #12A1EC;
 	margin-top:-5px;

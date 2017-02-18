@@ -50,7 +50,7 @@ public class UserController extends BaseController{
         User user = userService.findUserByNameAndPass(username,password);
         if(user != null){
             session.setAttribute("user",user);
-            return "UserViews/index";
+            return "UserViews/framset";
         }
         map.put("message","账号或密码错误！");
         return "forward:/user/loginUI";

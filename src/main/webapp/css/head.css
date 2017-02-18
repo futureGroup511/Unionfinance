@@ -1,0 +1,23 @@
+@charset "utf-8";
+*{
+  padding:0;
+  margin:0;
+}
+.row{
+  width:100%;
+  margin-top:1.9%;  
+}
+.background{
+  border-top: 20px solid #FE8E08;
+  border-bottom: 12px solid #FE8E08;
+}
+html{
+	font-size: 62.5%;/*10 ÷ 16 × 100% = 62.5%*/
+}
+h3{
+  font-size:2.5vw;
+  color:#FE8E08;
+  filter:Shadow(Color=gray,Direction=135);
+  font-family:黑体;
+  
+}
