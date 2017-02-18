@@ -146,6 +146,8 @@ public class UserController extends BaseController{
          * modelAndView.addObject("allIncome", ((User)request.getSession().getAttribute("user")).getUser_union().getUn_id(););
          * modelAndView.addObject("allExpense", ((User)request.getSession().getAttribute("user")).getUser_union().getUn_id(););
          */
+         modelAndView.addObject("allIncome", eRecordService.countAllExpense(((User)request.getSession().getAttribute("user")).getUser_union().getUn_id()));
+         modelAndView.addObject("allExpense",incomeRecordService.countAllIncome(((User)request.getSession().getAttribute("user")).getUser_union().getUn_id()));
         //当分页的时候 保存查询条件 进行每次条件的分页数据查询
         modelAndView.addObject("currentPage",currentPage);
         modelAndView.addObject("startDate",startDate);
