@@ -79,8 +79,8 @@ public class UserController extends BaseController{
         paramMap.put("startDate", startDate==null||"".trim()==endDate?format.format(new Date()):startDate);
         paramMap.put("endDate", endDate==null||"".trim()==endDate?format.format(new Date()):endDate);
         paramMap.put("timeIsOK",1);// 0代表时间不可用 ，1 代表时间可用
-        // 得到当前人的 公会id 进行查询该工会的记录
-        //paramMap.put("unionId",((User)request.getSession().getAttribute("user")).getUser_union().getUn_id());
+        //得到当前人的 公会id 进行查询该工会的记录
+        paramMap.put("unionId",((User)request.getSession().getAttribute("user")).getUser_union().getUn_id());
         Date beforeDate = format.parse(paramMap.get("startDate").toString());
         Date afterDate = format.parse(paramMap.get("endDate").toString());
         if(beforeDate.equals(afterDate) || beforeDate.after(afterDate)){
@@ -146,6 +146,8 @@ public class UserController extends BaseController{
          * modelAndView.addObject("allIncome", ((User)request.getSession().getAttribute("user")).getUser_union().getUn_id(););
          * modelAndView.addObject("allExpense", ((User)request.getSession().getAttribute("user")).getUser_union().getUn_id(););
          */
+         modelAndView.addObject("allIncome", eRecordService.countAllExpense(((User)request.getSession().getAttribute("user")).getUser_union().getUn_id()));
+         modelAndView.addObject("allExpense",incomeRecordService.countAllIncome(((User)request.getSession().getAttribute("user")).getUser_union().getUn_id()));
         //当分页的时候 保存查询条件 进行每次条件的分页数据查询
         modelAndView.addObject("currentPage",currentPage);
         modelAndView.addObject("startDate",startDate);
