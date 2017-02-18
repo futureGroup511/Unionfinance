@@ -38,7 +38,7 @@
 	LEFT OUTER JOIN uf_user on uf_expenditurerecord.er_user_id = uf_user.user_id
 	LEFT OUTER JOIN uf_entry on uf_expenditurerecord.er_entry_id = uf_entry.en_id
 	WHERE 1=1
-	and ir_union_id = #{unionId}
+	and er_union_id = #{unionId}
 	<if test="startDate != endDate">
 		AND er_date BETWEEN #{startDate} AND #{endDate}
 	</if>
@@ -55,7 +55,7 @@
 		LEFT OUTER JOIN uf_user on uf_expenditurerecord.er_user_id = uf_user.user_id
 		LEFT OUTER JOIN uf_entry on uf_expenditurerecord.er_entry_id = uf_entry.en_id
 		WHERE 1=1
-		and ir_union_id = #{unionId}
+		and er_union_id = #{unionId}
 		<if test="startDate != endDate">
 			AND er_date BETWEEN #{startDate} AND #{endDate}
 		</if>
@@ -73,7 +73,7 @@
         select sum(er_money)
         from uf_expenditurerecord
         WHERE 1=1
-        and ir_union_id = #{unionId}
+        and er_union_id = #{unionId}
     </select>
 
 
