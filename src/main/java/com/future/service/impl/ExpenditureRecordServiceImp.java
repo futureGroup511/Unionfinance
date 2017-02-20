@@ -24,15 +24,15 @@ public class ExpenditureRecordServiceImp  implements ExpenditureRecordService{
 	@Autowired
 	private ExpenditureRecordDao eDao;
 
-	public int queryExpenseRecordCount(Map<String, Object> paramMap) {
-		return eDao.queryExpenseRecordCount(paramMap);
+	public Integer queryExpenseRecordCount(Map<String, Object> paramMap) {
+		return eDao.meQueryExpenseRecordCount(paramMap);
 	}
 
 	public List<ExpenditureRecord> queryExpenseRecord(Map<String, Object> paramMap) {
 		return eDao.queryExpenseRecord(paramMap);
 	}
 
-    public int countAllExpense(Integer unionId) {
+    public Integer countAllExpense(Integer unionId) {
         return eDao.countAllExpense(unionId);
     }
 

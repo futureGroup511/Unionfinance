@@ -37,7 +37,7 @@
             <%--<a> <button class="btn btn-primary" type="button"><img src="images/yonghuzengjia.png" width="25" height="25">增加用户</button></a>--%>
         </div>
         <div class="col-lg-3 col-lg-offset-5 col-md-5 scol-md-offset-3 col-xs-5  col-xs-offset-1">
-            <p>当前位置：二级管理员>>查看拨款金额</p>
+            <p>当前位置：二级管理员>>查看所有收入记录</p>
         </div>
         <div class="col-lg-2 col-md-3 col-xs-3">
             <p>欢迎 ${user.user_name} 登录本系统</p>

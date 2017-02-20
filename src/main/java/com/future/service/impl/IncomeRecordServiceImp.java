@@ -28,8 +28,8 @@ public class IncomeRecordServiceImp implements IncomeRecordService {
 		incomeRecordDao.add(incomeRecord);
 	}
 
-    public int queryIncomeRecordsCount(Map<String, Object> paramMap) {
-        return incomeRecordDao.queryIncomeRecordsCount(paramMap);
+    public Integer queryIncomeRecordsCount(Map<String, Object> paramMap) {
+        return incomeRecordDao.meQueryIncomeRecordsCount(paramMap);
     }
 
     public List<IncomeRecord> queryIncomeRecords(Map<String, Object> paramMap) {
@@ -85,7 +85,7 @@ public class IncomeRecordServiceImp implements IncomeRecordService {
 		return incomeRecordDao.getConditionIncomeRecordSumMoney(date1, date2, un_id, en_id);
 	}
 
-	public int countAllIncome(Integer unionId) {
+	public Integer countAllIncome(Integer unionId) {
 		return incomeRecordDao.countAllIncome(unionId);
 	}
 

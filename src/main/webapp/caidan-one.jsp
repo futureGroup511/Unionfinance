@@ -17,7 +17,7 @@
 
     <div class="leftsidebar_box">
         <div class="line"></div>
-
+    <c:if test="${sessionScope.user.user_type eq 1 or sessionScope.user.user_type eq 2}">
         <dl class="system_log">
             <dt onClick="changeImage()" ><img src="${pageContext.request.contextPath}/images/select_xl01.png">公会管理</dt>
             <dd>
@@ -27,9 +27,12 @@
                 <a href= "/Unionfinance/union/delete" target="right">工会修改和删除</a>
             </dd>
         </dl>
+        <dl class="channel">
+            <dt><a href="/Unionfinance/user/findall" target="right">用户</a><img src="${pageContext.request.contextPath}/images/select_xl01.png"></dt>
+        </dl>
+    </c:if>
 
-
-    <c:if test="${sessionScope.user.user_id eq 1}">
+    <c:if test="${sessionScope.user.user_type eq 1}">
         <dl class="channel">
             <dt><a href= "/Unionfinance/incomerecord/incomerecordview" target="right">拨款</a><img src="${pageContext.request.contextPath}/images/select_xl01.png"></dt>
             <dt><a href="/Unionfinance/entry/findByType?type=0" target="right">收入条目</a><img src="${pageContext.request.contextPath}/images/select_xl01.png"></dt>
@@ -39,7 +42,7 @@
             </dt>
         </dl>
     </c:if>
-    <c:if test="${sessionScope.user.user_id eq 2}">
+    <c:if test="${sessionScope.user.user_type eq 2}">
         <dl class="channel">
             <dt><a href="${pageContext.request.contextPath}/expenditurerecord/addExpendUI" target="right">支出</a><img src="${pageContext.request.contextPath}/images/select_xl01.png"></dt>
             <dt><a href="/Unionfinance/entry/findByType?type=1" target="right">支出条目</a><img src="${pageContext.request.contextPath}/images/select_xl01.png"></dt>
@@ -50,7 +53,7 @@
         </dl>
     </c:if>
 
-        <c:if test="${sessionScope.user.user_id eq 3}">
+        <c:if test="${sessionScope.user.user_type eq 3}">
             <dl class="custom">
                 <dt onClick="changeImage()">收入/支出情况<img src="${pageContext.request.contextPath}/images/select_xl01.png"></dt>
                 <dd class="first_dd">
@@ -63,9 +66,7 @@
 
 
         </dl>
-        <dl class="channel">
-            <dt><a href="/Unionfinance/user/findall" target="right">用户</a><img src="${pageContext.request.contextPath}/images/select_xl01.png"></dt>
-        </dl>
+
 
         <dl class="chan">
             <dt onClick="changeImage()"><a href="${pageContext.request.contextPath}/user/logout" target="_top">退出</a><img src="${pageContext.request.contextPath}/images/select_xl01.png"></dt>

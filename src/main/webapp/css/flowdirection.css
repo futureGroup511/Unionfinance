@@ -79,3 +79,7 @@ body{
 .container-two .pagination{
 	margin-left:-3%;
 }
+.zong p{
+	width:88%;
+	margin:0 auto;
+}

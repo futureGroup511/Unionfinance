@@ -33,7 +33,7 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-1 col-lg-offset-1 col-md-2  col-xs-2 col-xs-offset-1">
-            <a><button class="btn btn-primary" type="button"><img src="<%= basePath%>images/yonghuzengjia.png" width="25" height="25">增加用户</button></a>
+
         </div>
         <div class="col-lg-3 col-lg-offset-5 col-md-5 scol-md-offset-3 col-xs-5  col-xs-offset-1">
             <p>当前位置：首页>>公会资金流向</p>
@@ -104,11 +104,15 @@
         </c:forEach>
         </tbody>
     </table>
+
+<div class="zong">
+    <p>总收入${allIncome==null?0:allIncome} &nbsp;总支出${allExpense==null?0:allExpense}</p>
+</div>
 </div>
 <div class="container-two">
     <div class="row">
         <div class="col-lg-5 col-lg-offset-5 col-md-5 col-md-offset-4 col-xs-5 col-xs-offset-4">
-            <p class="xixnxi">每页显示10条，总记录数4条</p>
+            <p class="xixnxi">每页显示 ${requestScope.page.pageSize}条，总记录数${requestScope.page.recordCount} 条</p>
         </div>
     </div>
     <div class="row">
@@ -194,6 +198,7 @@
             </tr>
         </s:forEach>
     </s:if>--%>
+
 </table>
 </body>
 </html>
