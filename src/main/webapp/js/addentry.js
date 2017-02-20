@@ -15,11 +15,13 @@ function addEntry(type) {
                         type:'post',
                         async:false,
                         success:function (message) {
+                            alert("添加成功");
                             $("#entry").append("<option value="+"'"+message+"'"+">"+str+"</option>");
                         }
-                    })
+                    });
+
                 }
-                else{alert("添加条目名字重复请重新添加")}
+                else{alert("添加条目名字重复请重新添加");}
             }
         })
     }else{

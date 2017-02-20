@@ -87,7 +87,7 @@
         <tr class="two">
             <th>拨款日期</th>
             <th>拨款金额</th>
-            <th>拨款人</th>
+            <th>经手人</th>
             <th>所给单位</th>
             <th>拨款项目</th>
         </tr>

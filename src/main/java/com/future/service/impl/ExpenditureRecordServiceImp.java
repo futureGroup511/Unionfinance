@@ -93,6 +93,8 @@ public class ExpenditureRecordServiceImp  implements ExpenditureRecordService{
 	}
 
 	public Double sumExMoney(Integer id) {
-		return eDao.sumExMoney(id);
+		Double money = eDao.sumExMoney(id);
+		if(money == null) money = 0.0;
+		return money;
 	}
 }

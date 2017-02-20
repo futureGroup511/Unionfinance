@@ -90,6 +90,8 @@ public class IncomeRecordServiceImp implements IncomeRecordService {
 	}
 
 	public Double sumMoney(Integer id) {
-		return incomeRecordDao.sumMoney(id);
+		Double money = incomeRecordDao.sumMoney(id);
+		if(money == null) money = 0.0;
+		return money;
 	}
 }
