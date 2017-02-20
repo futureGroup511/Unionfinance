@@ -112,7 +112,7 @@
 <div class="container-two">
     <div class="row">
         <div class="col-lg-5 col-lg-offset-5 col-md-5 col-md-offset-4 col-xs-5 col-xs-offset-4">
-            <p class="xixnxi">每页显示10条，总记录数4条</p>
+            <p class="xixnxi">每页显示 ${requestScope.page.pageSize}条，总记录数${requestScope.page.recordCount} 条</p>
         </div>
     </div>
     <div class="row">
