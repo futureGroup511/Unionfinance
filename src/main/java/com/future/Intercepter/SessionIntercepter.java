@@ -34,6 +34,6 @@ public class SessionIntercepter implements HandlerInterceptor {
     }
 
     private boolean isresource(String url){
-        return url.contains("loginUI") || url.contains("js") ||url.contains("jquery") || url.contains("img") || url.contains("css") || url.contains("pdf");
+        return url.contains("login") || url.contains("js") ||url.contains("jquery") || url.contains("img") || url.contains("css") || url.contains("pdf");
     }
 }
