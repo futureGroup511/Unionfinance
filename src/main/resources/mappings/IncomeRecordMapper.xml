@@ -54,7 +54,7 @@
     </select>
 
     <!-- 计算 某个公会的总的收入 -->
-    <select id="countAllIncome" resultType="int">
+    <select id="countAllIncome" resultType="java.lang.Integer">
         select sum(ir_money)
         from uf_incomerecord
         WHERE 1=1

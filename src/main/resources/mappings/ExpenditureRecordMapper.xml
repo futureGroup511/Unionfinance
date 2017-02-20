@@ -88,7 +88,7 @@
 
 
     <!-- 计算某工会的 总花费-->
-    <select id="countAllExpense" resultType="int">
+    <select id="countAllExpense" resultType="java.lang.Integer">
         select sum(er_money)
         from uf_expenditurerecord
         WHERE 1=1
