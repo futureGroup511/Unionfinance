@@ -19,14 +19,14 @@ import java.util.List;
 @RequestMapping("entry")
 public class EntryController extends BaseController{
 
-    @RequestMapping("/findall")
-    public ModelAndView findAll(){
+    /*@RequestMapping("/findByType")
+    public ModelAndView findByType(@RequestParam("type")Integer type){
         ModelAndView modelAndView = new ModelAndView();
         List<Entry> entries = entryService.findAll();
         modelAndView.addObject("entries",entries);
         modelAndView.setViewName("/EntryViews/findAll");
         return modelAndView;
-    }
+    }*/
 
     @RequestMapping("/delete")
     public ModelAndView delete(@RequestParam("id")Integer id){

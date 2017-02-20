@@ -77,7 +77,7 @@
                 <div class="col-lg-6 col-md-6  col-xs-6">
                     <select name="user_type" id="type" class="form-control">
                         <option value="1"  <c:if test="${user.user_type eq 1}"> selected</c:if>>拨款管理员</option>
-                        <option value="2"  <c:if test="${user.user_type eq 2}"> selected</c:if>>用户管理员</option>
+                        <option value="2"  <c:if test="${user.user_type eq 2}"> selected</c:if>>支出管理员</option>
                         <option value="3"  <c:if test="${user.user_type eq 3}"> selected</c:if>>工会主席</option>
                     </select>
                 </div>

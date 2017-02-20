@@ -73,7 +73,7 @@
                     <div class="col-lg-6 col-md-6  col-xs-6">
                         <select name="user_type" id="type" class="form-control">
                             <option value="1"  >拨款管理员</option>
-                            <option value="2"  >用户管理员</option>
+                            <option value="2"  >支出管理员</option>
                             <option value="3"  >工会主席</option>
                         </select>
 

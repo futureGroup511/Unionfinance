@@ -17,7 +17,7 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-3 col-lg-offset-5 col-md-5 scol-md-offset-3 col-xs-5  col-xs-offset-1">
-            <p>当前位置：首页>>所有收入\支出条目</p>
+            <p>当前位置：首页>条目</p>
         </div>
         <div class="col-lg-2 col-md-3 col-xs-3">
             <p>欢迎登录本系统</p>
@@ -30,7 +30,7 @@
     <div class="container-one">
         <div class="row">
             <div class="col-lg-3 col-lg-offset-3 col-md-3 col-md-offset-3 col-xs-3 col-xs-offset-3">
-                <div class="col-lg-6 col-md-6  col-xs-6">
+                <%--<div class="col-lg-6 col-md-6  col-xs-6">
                     <c:if test="${type == null or type == 0}">
                         <select name="type"   class="form-control">
                             <option value="0">拨款</option>
@@ -46,7 +46,7 @@
                 </div>
                 <div class="col-lg-4 col-md-6  col-xs-6">
                     <button class="btn btn-primary">提交</button>
-                </div>
+                </div>--%>
             </div>
         </div>
     </div>

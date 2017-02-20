@@ -18,7 +18,9 @@
 		<property name="prefix" value="/WEB-INF/views/"></property>
 		<property name="suffix" value=".jsp"></property>
 	</bean>
-	
+	<mvc:interceptors>
+		<bean class="com.future.Intercepter.SessionIntercepter"></bean>
+	</mvc:interceptors>
 	<!--
 	<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
 	    <property name="exceptionMappings">

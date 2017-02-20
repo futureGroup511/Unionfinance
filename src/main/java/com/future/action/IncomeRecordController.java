@@ -108,7 +108,7 @@ public class IncomeRecordController extends BaseController{
         Double incomeSumMonsy = incomeRecordService.getConditionIncomeRecordSumMoney(date1,date2,un_id,en_id);
         modelAndView.addObject("incomeSumMonsy",incomeSumMonsy);
         //准备数据，工会和条目
-        List<Entry> entryList = entryService.getAllExpenEntry();
+        List<Entry> entryList = entryService.getAllIncomeEntry();
         List<Union> unionList = unionService.findAll();
         modelAndView.addObject("entryList",entryList);
         modelAndView.addObject("unionList",unionList);

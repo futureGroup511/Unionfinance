@@ -28,35 +28,45 @@
             </dd>
         </dl>
 
+
+    <c:if test="${sessionScope.user.user_id eq 1}">
         <dl class="channel">
             <dt><a href= "/Unionfinance/incomerecord/incomerecordview" target="right">拨款</a><img src="${pageContext.request.contextPath}/images/select_xl01.png"></dt>
+            <dt><a href="/Unionfinance/entry/findByType?type=0" target="right">收入条目</a><img src="${pageContext.request.contextPath}/images/select_xl01.png"></dt>
+            <dt onClick="changeImage()"><a href="${pageContext.request.contextPath}/incomerecord/getAllIncomeRecord/1" target="right">查看收入</a><img src="${pageContext.request.contextPath}/images/select_xl01.png">
+            </dt>
+            <dt onClick="changeImage()"> <a href="${pageContext.request.contextPath}/expenditurerecord/getAllExpendRecord/1" target="right">查看支出</a><img src="${pageContext.request.contextPath}/images/select_xl01.png">
+            </dt>
         </dl>
+    </c:if>
+    <c:if test="${sessionScope.user.user_id eq 2}">
         <dl class="channel">
             <dt><a href="${pageContext.request.contextPath}/expenditurerecord/addExpendUI" target="right">支出</a><img src="${pageContext.request.contextPath}/images/select_xl01.png"></dt>
+            <dt><a href="/Unionfinance/entry/findByType?type=1" target="right">支出条目</a><img src="${pageContext.request.contextPath}/images/select_xl01.png"></dt>
+            <dt onClick="changeImage()"><a href="${pageContext.request.contextPath}/incomerecord/getAllIncomeRecord/1" target="right">查看收入</a><img src="${pageContext.request.contextPath}/images/select_xl01.png">
+            </dt>
+            <dt onClick="changeImage()"> <a href="${pageContext.request.contextPath}/expenditurerecord/getAllExpendRecord/1" target="right">查看支出</a><img src="${pageContext.request.contextPath}/images/select_xl01.png">
+            </dt>
         </dl>
-        <dl class="custom">
-            <dt onClick="changeImage()">收入/支出情况<img src="${pageContext.request.contextPath}/images/select_xl01.png"></dt>
-            <dd class="first_dd">
-                <a href="user/inspectExpenseByCondition?currentPage=1&entryId=&startDate=&endDate=" target="right">查看支出情况</a><br/>
-                <a href="user/inspectIncomeByCondition?currentPage=1&entryId=&startDate=&endDate=" target="right">查看收入情况</a><br/>
-            </dd>
-        </dl>
+    </c:if>
+
+        <c:if test="${sessionScope.user.user_id eq 3}">
+            <dl class="custom">
+                <dt onClick="changeImage()">收入/支出情况<img src="${pageContext.request.contextPath}/images/select_xl01.png"></dt>
+                <dd class="first_dd">
+                    <a href="user/inspectExpenseByCondition?currentPage=1&entryId=&startDate=&endDate=" target="right">查看支出情况</a><br/>
+                    <a href="user/inspectIncomeByCondition?currentPage=1&entryId=&startDate=&endDate=" target="right">查看收入情况</a><br/>
+                </dd>
+            </dl>
+        </c:if>
         <dl class="channel">
-            <dt><a href="/Unionfinance/entry/findall" target="right">收入/支出条目</a><img src="${pageContext.request.contextPath}/images/select_xl01.png"></dt>
+
+
         </dl>
         <dl class="channel">
             <dt><a href="/Unionfinance/user/findall" target="right">用户</a><img src="${pageContext.request.contextPath}/images/select_xl01.png"></dt>
         </dl>
-        <dl class="custom">
-            <dt onClick="changeImage()">收入/支出<img src="${pageContext.request.contextPath}/images/select_xl01.png"></dt>
-            <dd class="first_dd">
-                <a href="${pageContext.request.contextPath}/expenditurerecord/getAllExpendRecord/1" target="right">查看支出</a>
 
-            </dd>
-            <dd>
-                <a href="${pageContext.request.contextPath}/incomerecord/getAllIncomeRecord/1" target="right">查看收入</a>
-            </dd>
-        </dl>
         <dl class="chan">
             <dt onClick="changeImage()"><a href="${pageContext.request.contextPath}/user/logout" target="_top">退出</a><img src="${pageContext.request.contextPath}/images/select_xl01.png"></dt>
             <!--<dd class="first_dd"><a href="#">报名</a></dd>
