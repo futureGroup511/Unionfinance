@@ -13,11 +13,11 @@ import java.util.Map;
  */
 public interface ExpenditureRecordService {
 
-    int queryExpenseRecordCount(Map<String,Object> paramMap);
+    Integer queryExpenseRecordCount(Map<String,Object> paramMap);
 
     List<ExpenditureRecord> queryExpenseRecord(Map<String,Object> paramMap);
 
-    int countAllExpense(Integer unionId);
+    Integer countAllExpense(Integer unionId);
 
     /**
      * 添加支出记录

@@ -35,14 +35,16 @@
     </insert>
     -->
 
-    <select id="queryIncomeRecordsCount" resultType="int">
+    <select id="meQueryIncomeRecordsCount" resultType="java.lang.Integer">
         select count(*)
         from uf_incomerecord
         LEFT OUTER JOIN uf_union on uf_incomerecord.ir_union_id = uf_union.un_id
         LEFT OUTER JOIN uf_user on uf_incomerecord.ir_user_id = uf_user.user_id
         LEFT OUTER JOIN uf_entry on uf_incomerecord.ir_entry_id = uf_entry.en_id
         WHERE 1=1
-        and ir_union_id = #{unionId}
+       <if test="unionId != null">
+          AND ir_union_id = #{unionId}
+        </if>
         <if test="startDate != endDate">
             AND ir_date BETWEEN #{startDate} AND #{endDate}
         </if>
@@ -67,7 +69,7 @@
         LEFT OUTER JOIN uf_user on uf_incomerecord.ir_user_id = uf_user.user_id
         LEFT OUTER JOIN uf_entry on uf_incomerecord.ir_entry_id = uf_entry.en_id
         WHERE 1=1
-        and ir_union_id = #{unionId}
+        AND ir_union_id = #{unionId}
         <if test="startDate != endDate">
             AND ir_date BETWEEN #{startDate} AND #{endDate}
         </if>

@@ -92,13 +92,15 @@ public class UserController extends BaseController{
         Page page = null;
         pageSize = 8;
         if(queryType==0){
-            Integer incomeRecordCount = incomeRecordService.queryIncomeRecordsCount(paramMap);
+           Integer incomeRecordCount = incomeRecordService.queryIncomeRecordsCount(paramMap);
+           // Integer incomeRecordCount = 10;
             page = new Page(currentPage,pageSize,incomeRecordCount,null);
             paramMap.put("page", page);
             List<IncomeRecord> incomeRecordList = incomeRecordService.queryIncomeRecords(paramMap);
             page.setRecordlist(incomeRecordList);
         }else if(queryType==1){
             Integer expenseRecordCount = eRecordService.queryExpenseRecordCount(paramMap);
+            //Integer expenseRecordCount = 10;
             page = new Page(currentPage,pageSize,expenseRecordCount,null);
             paramMap.put("page", page);
             List<ExpenditureRecord> expenseRecordList = eRecordService.queryExpenseRecord(paramMap);

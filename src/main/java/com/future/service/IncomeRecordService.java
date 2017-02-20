@@ -15,7 +15,7 @@ public interface IncomeRecordService {
 
     void add(IncomeRecord incomeRecord);
     // 按指定条件 查询收入记录的数量情况
-    int queryIncomeRecordsCount(Map<String, Object> paramMap);
+    Integer queryIncomeRecordsCount(Map<String, Object> paramMap);
 
     //按指定条件 查询收入记录情况
     List<IncomeRecord> queryIncomeRecords(Map<String, Object> paramMap);
@@ -53,7 +53,7 @@ public interface IncomeRecordService {
      */
     Double getConditionIncomeRecordSumMoney(String date1, String date2, Integer un_id, Integer en_id);
 
-    int countAllIncome(Integer unionId);
+    Integer countAllIncome(Integer unionId);
 
     /**
      * 公会所有拨款的总和

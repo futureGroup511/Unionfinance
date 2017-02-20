@@ -10,11 +10,11 @@ import java.util.Map;
 @Repository
 public interface ExpenditureRecordDao {
 
-    int queryExpenseRecordCount(Map<String,Object> paramMap);
+    Integer meQueryExpenseRecordCount(Map<String,Object> paramMap);
 
     List<ExpenditureRecord> queryExpenseRecord(Map<String,Object> paramMap);
 
-    int countAllExpense(Integer unionId);
+    Integer countAllExpense(Integer unionId);
     /**
      * ���֧�����?
      * @param expendRecord

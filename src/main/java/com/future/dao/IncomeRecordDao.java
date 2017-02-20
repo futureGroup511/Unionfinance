@@ -18,7 +18,7 @@ public interface IncomeRecordDao {
     void add(IncomeRecord incomeRecord);
 
     //得到指定条件下 记录的数量
-    int queryIncomeRecordsCount(Map<String, Object> paramMap);
+    Integer meQueryIncomeRecordsCount(Map<String, Object> paramMap);
 
     List<IncomeRecord> queryIncomeRecords(Map<String, Object> paramMap);
 
