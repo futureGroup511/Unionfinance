@@ -45,7 +45,7 @@
        <if test="unionId != null">
           AND ir_union_id = #{unionId}
         </if>
-        <if test="startDate != endDate">
+        <if test="startDate != endDate and timeIsOK == 1">
             AND ir_date BETWEEN #{startDate} AND #{endDate}
         </if>
         <if test="entryId != null">
@@ -70,7 +70,7 @@
         LEFT OUTER JOIN uf_entry on uf_incomerecord.ir_entry_id = uf_entry.en_id
         WHERE 1=1
         AND ir_union_id = #{unionId}
-        <if test="startDate != endDate">
+        <if test="startDate != endDate and timeIsOK == 1">
             AND ir_date BETWEEN #{startDate} AND #{endDate}
         </if>
         <if test="entryId!=null">

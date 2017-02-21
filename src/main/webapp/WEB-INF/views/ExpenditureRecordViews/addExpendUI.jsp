@@ -58,7 +58,7 @@
 <form:form id="form" action="${pageContext.request.contextPath}/expenditurerecord/addExpend"  method="post">
     <div class="container-one">
         <div class="row">
-            <div class="col-lg-3 col-lg-offset-3 col-md-4 col-md-offset-2 col-xs-3 col-xs-offset-2" style="margin-left:28%;">
+            <div class="col-lg-3 col-lg-offset-2 col-md-4 col-md-offset-2 col-xs-3 col-xs-offset-2" >
                 <div class="col-lg-4 col-md-6  col-xs-6">
                     <span>单位：</span>
                 </div>
@@ -70,7 +70,7 @@
                     </select>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-4  col-xs-3">
+            <div class="col-lg-4 col-md-4  col-xs-3">
                 <div class="col-lg-4 col-md-6  col-xs-6">
                     <span>金额：</span>
                 </div>
@@ -80,7 +80,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-3 col-lg-offset-3 col-md-4 col-md-offset-2 col-xs-3 col-xs-offset-2" style="margin-left:28%;">
+            <div class="col-lg-3 col-lg-offset-2 col-md-4 col-md-offset-2 col-xs-3 col-xs-offset-2">
                 <div class="col-lg-4 col-md-6  col-xs-6">
                     <span>报账人：</span>
                 </div>
@@ -88,7 +88,7 @@
                     <input id="repour" type="text" name="er_accour_repour" class="form-control">
                 </div>
             </div>
-            <div class="col-lg-3 col-md-4  col-xs-3">
+            <div class="col-lg-4 col-md-4  col-xs-3">
                 <div class="col-lg-4 col-md-6  col-xs-6">
                     <span>条目：</span>
                 </div>
@@ -105,7 +105,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-3 col-lg-offset-3 col-md-4 col-md-offset-2 col-xs-3 col-xs-offset-2" style="margin-left:28%;">
+            <div class="col-lg-3 col-lg-offset-2 col-md-4 col-md-offset-2 col-xs-3 col-xs-offset-2">
                 <div class="col-lg-4 col-md-6  col-xs-6">
                     <span>备注：</span>
                 </div>
@@ -114,8 +114,8 @@
                 </div>
             </div>
 
-            <div class="col-lg-1 col-md-1 col-xs-1">
-                <button class="btn btn-primary" id="tijiao" type="button">提&nbsp;&nbsp;交</button>
+            <div class="col-lg-1 col-lg-offset-2 col-md-1 col-md-offset-2  col-xs-1 col-xs-offset-2">
+                <button class="btn btn-primary" id="tijiao" type="button" style="margin-left:-12%;">提&nbsp;&nbsp;交</button>
             </div>
         </div>
     </div>

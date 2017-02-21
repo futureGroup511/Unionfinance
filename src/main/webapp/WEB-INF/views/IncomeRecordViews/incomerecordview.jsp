@@ -35,7 +35,7 @@
 <div id="body-one">
     <div class="container-one">
         <div class="row">
-            <div class="col-lg-3 col-lg-offset-3 col-md-3 col-md-offset-2 col-xs-3 col-xs-offset-2" style="margin-left:28%;">
+            <div class="col-lg-3 col-lg-offset-2 col-md-3 col-md-offset-2 col-xs-3 col-xs-offset-2">
                 <div class="col-lg-4 col-md-6  col-xs-6">
                     <span>单位：</span>
                 </div>
@@ -47,7 +47,7 @@
                     </select>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-3  col-xs-3">
+            <div class="col-lg-4 col-md-4  col-xs-4">
                 <div class="col-lg-4 col-md-6  col-xs-6">
                     <span>条目：</span>
                 </div>
@@ -60,11 +60,11 @@
                 </div>
             </div>
             <div class="col-lg-2 col-lg-pull-1 col-md-2 col-md-pull-1 col-xs-3 col-xs-pull-1">
-                <strong><p><a href="#" onclick="addEntry(0)" style="color: red">如果没有此条目，请点击添加</a></p></strong>
+                <strong><p><a href="#" onclick="addEntry(0)" style="color: red margin-left:-20%;" >如果没有此条目，请点击添加</a></p></strong>
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-3 col-lg-offset-3 col-md-3 col-md-offset-2 col-xs-3 col-xs-offset-2" style="margin-left:28%;">
+            <div class="col-lg-3 col-lg-offset-2 col-md-3 col-md-offset-2 col-xs-3 col-xs-offset-2">
                 <div class="col-lg-4 col-md-6  col-xs-6">
                     <span>金额：</span>
                 </div>
@@ -72,7 +72,7 @@
                     <input type="text" class="form-control" name="ir_money" >
                 </div>
             </div>
-            <div class="col-lg-3 col-md-3  col-xs-3">
+            <div class="col-lg-4 col-md-4  col-xs-4">
                 <div class="col-lg-4 col-md-6  col-xs-6">
                     <span>备注：</span>
                 </div>

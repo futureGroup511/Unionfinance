@@ -86,7 +86,7 @@ a{text-decoration:none;}
     margin-top: -1px;
 }
 .leftsidebar_box .system_log dt{
-	background-image:url(../images/shoukuan.png);
+	background-image:url(../images/guanli.png);
     background-repeat: no-repeat;
     background-position:left;
 }
@@ -95,8 +95,22 @@ a{text-decoration:none;}
     background-repeat: no-repeat;
     background-position:left;
 }
+.leftsidebar_box .channel .zhichu{
+    background-image:url(../images/zhichu.png);
+}
+.leftsidebar_box .channel .shouru{
+    background-image:url(../images/shouru.png);
+}
 .leftsidebar_box .channel dt{
 	background-image:url(../images/took.png);
+    background-repeat: no-repeat;
+    background-position:left;
+}
+.leftsidebar_box .channel .tiaomu{
+    background-image:url(../images/tiaomu.png);
+}
+.leftsidebar_box .user dt{
+    background-image:url(../images/yonghu.png);
     background-repeat: no-repeat;
     background-position:left;
 }

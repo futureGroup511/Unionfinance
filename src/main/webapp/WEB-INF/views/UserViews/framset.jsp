@@ -13,7 +13,7 @@
         <frame  src="${pageContext.request.contextPath}/head-one.jsp" scrolling="no"></frame>
         <frameset cols="12%,77%"  frameborder="0"  framespacing="0" name="caidan">
             <frame src="${pageContext.request.contextPath}/caidan-one.jsp" scrolling="no"></frame>
-            <frame src="${pageContext.request.contextPath}/welcome-one.jsp" scrolling="no" frameborder="1"   name="right" /></frameset>
+            <frame src="${pageContext.request.contextPath}/welcome-one.jsp" <%--scrolling="no"--%> frameborder="1"   name="right" /></frameset>
         <noframes></noframes>
 
         </head>
