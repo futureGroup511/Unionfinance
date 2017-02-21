@@ -121,7 +121,7 @@ public class UserController extends BaseController{
 
         //{currentPage}/{entryId}/{startDate}/{endDate}
         //对 条件数据 进行处理 用做查询条件进行数据查询
-        Integer currentPage = Integer.parseInt(request.getParameter("currentPage")==null||request.getParameter("currentPage").trim()==""?1+"":request.getParameter("currentPage"));
+        Integer currentPage = Integer.parseInt((request.getParameter("currentPage")==null||request.getParameter("currentPage").trim()=="")?1+"":request.getParameter("currentPage"));
         currentPage = currentPage<1?1:currentPage;
         String entryIdStr = request.getParameter("entryId");
         Integer entryId = null;
