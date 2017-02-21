@@ -90,7 +90,7 @@ public class PageBean {
     public static PageBean getDefault(){
         PageBean p=newInstance();
         p.setCurrentPage(1);
-        p.setPageSize(10);
+        p.setPageSize(8);
         return p;
     }
     /**
