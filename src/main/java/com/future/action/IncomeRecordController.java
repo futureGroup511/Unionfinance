@@ -5,6 +5,7 @@ import com.future.domain.Entry;
 import com.future.domain.IncomeRecord;
 import com.future.domain.Union;
 import com.future.domain.User;
+import com.future.utils.Balance;
 import com.future.utils.PageBean;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -17,6 +18,7 @@ import java.util.List;
 
 /**
  * Created by 牛洧鹏 on 2017/1/15.
+ * 收入
  */
 @Controller
 @Scope("prototype")
@@ -24,8 +26,15 @@ import java.util.List;
 @SessionAttributes("user")
 public class IncomeRecordController extends BaseController{
 
+    @RequestMapping(value="getBalance",method = RequestMethod.GET)
+    public void getBalance(){
+        List<Balance> getBalance = incomeRecordService.getBalance();
+        System.out.println(getBalance);
+    }
+
     /**
      * 进入拨款的页面
+     * 收入
      * @return
      */
     @RequestMapping(value = "/incomerecordview")

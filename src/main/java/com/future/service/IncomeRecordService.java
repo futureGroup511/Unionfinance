@@ -1,6 +1,7 @@
 package com.future.service;
 
 import com.future.domain.IncomeRecord;
+import com.future.utils.Balance;
 import com.future.utils.PageBean;
 
 import java.util.List;
@@ -62,4 +63,9 @@ public interface IncomeRecordService {
      */
     Double sumMoney(Integer id);
 
+    /**
+     * 查询余额
+     * @return
+     */
+    List<Balance> getBalance();
 }

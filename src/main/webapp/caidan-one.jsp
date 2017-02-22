@@ -67,7 +67,7 @@
         </c:if>
         <dl class="channel">
 
-
+            <a href= "${pageContext.request.contextPath}/incomerecord/getBalance" target="right">查看余额</a>
         </dl>
 
 

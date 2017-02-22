@@ -1,6 +1,7 @@
 package com.future.dao;
 
 import com.future.domain.IncomeRecord;
+import com.future.utils.Balance;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -79,4 +80,10 @@ public interface IncomeRecordDao {
      * @return
      */
     Double sumMoney(Integer id);
+
+    /**
+     * 查询余额
+     * @return
+     */
+    List<Balance> getBalance();
 }

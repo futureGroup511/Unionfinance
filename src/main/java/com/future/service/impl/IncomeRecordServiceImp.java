@@ -1,6 +1,7 @@
 package com.future.service.impl;
 
 import com.future.domain.IncomeRecord;
+import com.future.utils.Balance;
 import com.future.utils.PageBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -87,6 +88,14 @@ public class IncomeRecordServiceImp implements IncomeRecordService {
 
 	public Integer countAllIncome(Integer unionId) {
 		return incomeRecordDao.countAllIncome(unionId);
+	}
+
+	/**
+	 * 查询余额
+	 * @return
+	 */
+	public List<Balance> getBalance() {
+		return incomeRecordDao.getBalance();
 	}
 
 	public Double sumMoney(Integer id) {

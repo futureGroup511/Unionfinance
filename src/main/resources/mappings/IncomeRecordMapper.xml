@@ -179,4 +179,17 @@
     <select id="sumMoney" parameterType="int" resultType="double">
         SELECT SUM(ir_money) FROM uf_incomerecord WHERE ir_union_id = #{id}
     </select>
+
+
+    <resultMap id="balanceMap" type="com.future.utils.Balance">
+        <id column="unname1" property="union" />
+        <result column="shouru1" property="income" jdbcType="DOUBLE" />
+        <result column="zhichu1" property="expend" jdbcType="DOUBLE" />
+        <result column="yue" property="balance" jdbcType="DOUBLE" />
+    </resultMap>
+    <!--* 查询余额 -->
+    <select id="getBalance" resultType="double" resultMap="balanceMap">
+        select unname1,shouru1,zhichu1,shouru1-zhichu1 as yue from shouru LEFT JOIN zhichu on shouru.unname1 = zhichu.unname2
+    </select>
+
 </mapper>
