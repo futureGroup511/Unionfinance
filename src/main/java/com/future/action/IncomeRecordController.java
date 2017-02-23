@@ -26,10 +26,16 @@ import java.util.List;
 @SessionAttributes("user")
 public class IncomeRecordController extends BaseController{
 
+    /**
+     * 查询余额
+     */
     @RequestMapping(value="getBalance",method = RequestMethod.GET)
-    public void getBalance(){
+    public ModelAndView getBalance(){
+        String viewname="IncomeRecordViews/getBalance";
+        ModelAndView modelAndView = new ModelAndView(viewname);
         List<Balance> getBalance = incomeRecordService.getBalance();
-        System.out.println(getBalance);
+        modelAndView.addObject("balance",getBalance);
+        return  modelAndView;
     }
 
     /**
