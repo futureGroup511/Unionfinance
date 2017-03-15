@@ -45,7 +45,7 @@
                     <td>${user.user_name}</td>
                     <td>${user.user_phonenumber}</td>
                     <td>${user.user_union.un_name}</td>
-                    <td>${user.user_type eq 0? '拨款管理员':user.user_type eq 1? '支出管理员':'普通用户'}</td>
+                    <td>${user.user_type eq 1? '拨款管理员':user.user_type eq 2? '支出管理员':'普通用户'}</td>
 
                     <td class="four">
                         <img src="${pageContext.request.contextPath}/images/bian.png">

@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="<%=basePath%>/css/bootstrap.css">
     <link rel="stylesheet" href="<%=basePath%>/css/index-one.css">
 </head>
+<script>
+   if(window.parent != window)  window.parent.location.href= "/Unionfinance/user/loginUI";
+</script>
 <body>
 <div class="container">
     <div class="header">

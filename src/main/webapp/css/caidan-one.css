@@ -40,8 +40,7 @@ a{text-decoration:none;}
 .leftsidebar_box dt{
     padding-left:16%;
     padding-right:10px;
-    background-repeat:no-repeat;
-    background-position:10px center;
+
     color:white/*一级菜单字体颜色*/;
     font-size:9vw;
     position:relative;
@@ -49,12 +48,7 @@ a{text-decoration:none;}
     cursor:pointer;
 	margin-top:20px;
 	
-	background: -moz-linear-gradient(top,  #AAE9F9 0%, #1190DC 100%);
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#AAE9F9), color-stop(100%,#1190DC));
-	background: -webkit-linear-gradient(top,  #AAE9F9 0%,#1190DC 100%);
-	background: -o-linear-gradient(top,  #AAE9F9 0%,#1190DC 100%);
-	background: -ms-linear-gradient(top,  #AAE9F9 0%,#1190DC 100%);
-	background: linear-gradient(top,  #AAE9F9 0%,#1190DC 100%);	/*娑撯偓缁狙嗗綅閸楁洜鍋ｉ崥搴″綁閻ㄥ嫰顤侀懝锟
+	
 }
 
 

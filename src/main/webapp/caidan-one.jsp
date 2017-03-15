@@ -27,8 +27,8 @@
             <a href= "/Unionfinance/union/delete" target="right">工会修改和删除</a>
         </dd>
     </dl>
-    <dl class="user">
-        <dt><a href="/Unionfinance/user/findall" target="right">用户</a><img src="${pageContext.request.contextPath}/images/select_xl01.png"></dt>
+    <dl class="channel">
+        <dt> <a href= "${pageContext.request.contextPath}/incomerecord/getBalance" target="right">查看余额</a></dt>
     </dl>
     </c:if>
 
@@ -42,6 +42,9 @@
             </dt>
             <dt onClick="changeImage()" class="zhichu"> <a href="${pageContext.request.contextPath}/expenditurerecord/getAllExpendRecord/1" target="right">查看支出</a><img src="${pageContext.request.contextPath}/images/select_xl01.png">
             </dt>
+        </dl>
+        <dl class="user">
+            <dt><a href="/Unionfinance/user/findall" target="right">用户</a><img src="${pageContext.request.contextPath}/images/select_xl01.png"></dt>
         </dl>
     </c:if>
     <c:if test="${sessionScope.user.user_type eq 2}">
@@ -65,11 +68,10 @@
 
             </dl>
         </c:if>
-        <dl class="channel">
 
-            <dt> <a href= "${pageContext.request.contextPath}/incomerecord/getBalance" target="right">查看余额</a></dt>
+        <dl>
+            <dt><a href="user/modifypasswordview" target="right">修改密码</a></dt>
         </dl>
-
 
         <dl class="chan">
             <dt onClick="changeImage()"><a href="${pageContext.request.contextPath}/user/logout" target="_top">退出</a><img src="${pageContext.request.contextPath}/images/select_xl01.png"></dt>

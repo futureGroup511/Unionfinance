@@ -28,6 +28,24 @@ import java.util.Map;
 public class UserController extends BaseController{
 
 
+    @RequestMapping(value = "modifypasswordview")
+    public ModelAndView modifypasswordview(HttpServletRequest request){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("UserViews/modifypasswordview");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "modifypassword")
+    public ModelAndView modifypassword(@RequestParam("password")String password,HttpSession session){
+        User user = (User) session.getAttribute("user");
+        user.setUser_password(password);
+        userService.update(user);
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("redirect:/user/loginUI");
+        return modelAndView;
+    }
+
+
     /**
      * 请求登陆页面
      * @return

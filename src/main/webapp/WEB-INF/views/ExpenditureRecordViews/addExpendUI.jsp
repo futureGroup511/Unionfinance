@@ -110,7 +110,9 @@
                     <span>备注：</span>
                 </div>
                 <div class="col-lg-6 col-md-6  col-xs-6">
-                    <input type="text" name="er_redundancy" class="form-control">
+                    <textarea type="text" name="er_redundancy" class="form-control" rows="5" style="margin-left: -42%;
+	width: 100%;
+	margin-top:-5px;"></textarea>
                 </div>
             </div>
 
