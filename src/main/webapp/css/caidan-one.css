@@ -40,7 +40,6 @@ a{text-decoration:none;}
 .leftsidebar_box dt{
     padding-left:16%;
     padding-right:10px;
-
     color:white/*一级菜单字体颜色*/;
     font-size:9vw;
     position:relative;
@@ -54,13 +53,11 @@ a{text-decoration:none;}
 
 
 .leftsidebar_box dd{
-    background-color:white/*二级菜单背景颜色*/;
     padding-left:16%;
-   
     
     }
 .leftsidebar_box dd{
-	margin-left:20%;
+	margin-left:10%;
 	
 }
 .leftsidebar_box dd a{

@@ -45,9 +45,9 @@
                 <div class="row">
                     <div class="col-lg-4 col-lg-offset-4 col-md-5 col-md-offset-4 col-xs-4 col-xs-offset-4">
                         <div class="col-lg-5 col-md-7 col-xs-7">
-                            <p>请输入新的密码：</p>
+                            <p>请输入新的密码:</p>
                         </div>
-                        <div class="col-lg-7 col-md-7 col-xs-7">
+                        <div class="col-lg-5 col-md-5 col-xs-5">
                             <input type="password" name="password" id="first" class="form-control">
                         </div>
                     </div>
@@ -55,9 +55,9 @@
                 <div class="row">
                     <div class="col-lg-4 col-lg-offset-4 col-md-5 col-md-offset-4 col-xs-4 col-xs-offset-4">
                         <div class="col-lg-5 col-md-7 col-xs-7">
-                            <p>再一次输入密码：</p>
+                            <p>再一次输入密码:</p>
                         </div>
-                        <div class="col-lg-7 col-md-7 col-xs-7">
+                        <div class="col-lg-5 col-md-5 col-xs-5">
                             <input type="password" id="second" class="form-control">
                         </div>
                     </div>
