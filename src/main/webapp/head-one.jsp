@@ -17,7 +17,7 @@
 <div class="head">
     <div class="row">
         <div class="col-lg-5 col-md-5 col-xs-5 col-lg-offset-4 col-md-offset-4 col-xs-offset-4">
-            <h3 class="first">河南科技学院工会资金应用系统</h3>
+            <h3 class="first">河南科技学院工会资金管理系统</h3>
         </div>
 
     </div>

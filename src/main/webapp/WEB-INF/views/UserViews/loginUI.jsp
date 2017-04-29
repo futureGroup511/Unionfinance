@@ -7,7 +7,7 @@
 %>
 <html>
 <head>
-    <title>登陆页面</title>
+    <title>河南科技学院工会资金管理系统</title>
     <link rel="stylesheet" href="<%=basePath%>/css/bootstrap.css">
     <link rel="stylesheet" href="<%=basePath%>/css/index-one.css">
 </head>
@@ -17,7 +17,7 @@
 <body>
 <div class="container">
     <div class="header">
-        <p>河南科技学院公会资金应用系统</p>
+        <p>河南科技学院工会资金管理系统</p>
     </div>
     <div class="body">
         <div class="box">

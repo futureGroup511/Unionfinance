@@ -55,7 +55,7 @@
 <body>
 <div class="row">
     <div class="col-lg-12  col-md-12  col-xs-12 ">
-        <h2><marquee behavior="scroll">欢迎登录工会资金应用系统</marquee></h2>
+        <h2><marquee behavior="scroll">欢迎登录河南科技学院工会资金管理系统</marquee></h2>
     </div>
 </div>
 <div class="background navbar-fixed-top" style="position:absolute; z-index:-1;width:100%; height:100%; bottom:0px;  padding: 0;
